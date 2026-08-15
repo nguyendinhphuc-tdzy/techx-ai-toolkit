@@ -1,76 +1,54 @@
 ---
 name: production-readiness
-description: Hướng dẫn đưa một MVP từ máy cá nhân lên môi trường triển khai (deployment) thật mà người dùng ngoài đội thi có thể truy cập được — hạ tầng deploy, chi phí API, xử lý lỗi khi chạy thật, và kiểm tra từ môi trường ngoài. LUÔN dùng khi người dùng hỏi về deploy/triển khai/đưa sản phẩm lên mạng, khi cần LINK TRUY CẬP thật cho Demo MVP, hoặc khi sản phẩm vẫn đang chạy trên "localhost". Khác với testing-and-validation (lo tính năng có ĐÚNG và TRUNG THỰC để demo hay không) — skill này lo sản phẩm có TRUY CẬP ĐƯỢC thật và không sập. KHÔNG dùng cho sự cố lộ secret/API key cụ thể — luôn chuyển sang security-basics cho phần đó. Dùng sau ai-assisted-build và song song/sau testing-and-validation.
+description: Guides taking an MVP from a personal machine to a real deployment environment that people outside the team can access — deploy infrastructure, API costs, error handling under real usage, and testing from an outside environment. ALWAYS use when the user asks about deploying/going live, when a real ACCESS LINK is needed for the MVP Demo, or when the product is still only running on "localhost." Different from testing-and-validation (which covers whether features are CORRECT and HONESTLY represented for the demo) — this skill covers whether the product is ACCESSIBLE and won't crash. DO NOT use for a specific leaked secret/API key incident — always switch to security-basics for that. Use after ai-assisted-build, and in parallel with/after testing-and-validation.
 ---
 
-# Production Readiness — Từ MVP trên máy cá nhân đến sản phẩm dùng được thật
+# Production Readiness — From a Personal MVP to Something Real People Can Use
 
-## Vì sao bước này hay bị bỏ qua và hậu quả
+## Why this step often gets skipped, and the consequences
 
-Trong áp lực 6 tuần, nhiều đội dừng lại ở "chạy được trên localhost, quay video là xong".
-Nhưng Thể lệ cho phép nộp "link truy cập sản phẩm" thay video — một sản phẩm deploy
-thật, người ngoài bấm vào dùng được ngay, luôn thuyết phục và chuyên nghiệp hơn hẳn một
-video quay màn hình. Agent áp dụng skill này giúp người dùng đi hết quãng đường còn lại,
-thường chỉ mất vài giờ nếu code đã sạch từ bước `ai-assisted-build`.
+Under the pressure of 6 weeks, many teams stop at "it runs on localhost, let's just record a video." But the competition rules allow submitting a "product access link" instead of a video — a genuinely deployed product that outsiders can click into and use right away is always more convincing and more professional than a screen-recorded video. An agent applying this skill helps the user cover the remaining distance, usually only a few hours if the code is already clean from the `ai-assisted-build` step.
 
-## Checklist tối thiểu trước khi deploy (bắt buộc, không phải "nếu có thời gian")
+## Minimum checklist before deploying (mandatory, not "if there's time")
 
-### 1. Không bao giờ để lộ API key / secrets trong code
-- Kiểm tra: không có API key, mật khẩu, connection string nào hardcode trực tiếp trong
-  file code đã commit lên Git.
-- Dùng biến môi trường (`.env` file, KHÔNG commit file này — thêm vào `.gitignore`).
-- Nếu lỡ commit key lên Git public trước đó: coi như key đó đã lộ, phải thu hồi
-  (revoke) và tạo key mới ngay, đừng chỉ xoá dòng code.
+### 1. Never leave an API key/secret exposed in code
+- Check: no API key, password, or connection string is hardcoded directly in any file already committed to Git.
+- Use environment variables (`.env` file, DO NOT commit this file — add it to `.gitignore`).
+- If a key was accidentally committed to a public Git repo before: treat that key as already leaked, revoke it and generate a new one immediately, not just delete the line of code.
 
-### 2. Giới hạn chi phí AI API để tránh hoá đơn bất ngờ
-- Đặt rate limit / usage cap phía ứng dụng (giới hạn số request/người dùng/phút) —
-  không chỉ dựa vào giới hạn mặc định của nhà cung cấp.
-- Với API trả phí theo lượng dùng, đặt budget alert hoặc dùng gói free tier có giới hạn
-  cứng nếu có thể trong giai đoạn thi.
+### 2. Cap AI API costs to avoid a surprise bill
+- Set a rate limit / usage cap on the application side (limiting requests per user/minute) — don't rely solely on the provider's default limits.
+- For pay-per-use APIs, set a budget alert or use a free tier with a hard limit where possible during the competition period.
 
-### 3. Xử lý lỗi để không "sập trắng màn hình"
-- Mọi lời gọi tới AI API/backend phải có try-catch và hiển thị thông báo lỗi thân thiện
-  cho người dùng, không để màn hình trắng hoặc lỗi kỹ thuật khó hiểu.
-- Có trạng thái loading rõ ràng khi đang chờ AI phản hồi (đặc biệt quan trọng vì AI có
-  thể mất vài giây).
+### 3. Handle errors so it doesn't "crash to a blank screen"
+- Every call to an AI API/backend must have try-catch and show a user-friendly error message, instead of a blank screen or a confusing technical error.
+- Have a clear loading state while waiting for an AI response (especially important since AI can take several seconds).
 
-### 4. Chọn nền tảng deploy phù hợp với stack, không cần phức tạp
-Không cần hạ tầng doanh nghiệp cho một MVP thi đấu — nền tảng deploy miễn phí/rẻ, thiết
-lập trong vài phút là đủ. Xem `resources/cong-cu-ai-theo-giai-doan.md` để so sánh các
-lựa chọn phổ biến (Vercel, Netlify, Railway, Render, Fly.io, Supabase...) theo loại
-stack (frontend tĩnh, full-stack, có backend riêng, cần database...).
+### 4. Choose a deployment platform that fits the stack, no need for complexity
+No need for enterprise-grade infrastructure for a competition MVP — a free/cheap deployment platform set up in a few minutes is enough. See `resources/cong-cu-ai-theo-giai-doan.md` to compare common options (Vercel, Netlify, Railway, Render, Fly.io, Supabase...) by stack type (static frontend, full-stack, separate backend, needs a database...).
 
-### 5. Kiểm tra sản phẩm từ một thiết bị/mạng khác, không phải máy đã dùng để build
-Nhờ một người ngoài đội mở link và thử — đây là phép thử "có thật sự production không"
-đáng tin nhất. Rất nhiều lỗi chỉ xuất hiện khi rời khỏi môi trường quen thuộc của người
-build (biến môi trường thiếu, CORS, domain chưa cấu hình).
+### 5. Test the product from a different device/network, not the machine used to build it
+Have someone outside the team open the link and try it — this is the most reliable test of "is this actually production-ready." Many bugs only show up once you leave the builder's familiar environment (missing environment variables, CORS, unconfigured domain).
 
-### 6. Có domain/link ổn định để đưa vào hồ sơ nộp bài
-Link phải còn hoạt động tới hết đêm Chung kết — kiểm tra lại các giới hạn của gói miễn
-phí (một số nền tảng tự tắt app sau thời gian không hoạt động, cần bấm lại/upgrade).
+### 6. Have a stable domain/link to include in the submission
+The link must still be working through the Final round night — double-check the limits of any free-tier plan (some platforms auto-sleep an app after inactivity and need to be manually restarted/upgraded).
 
-## Không cần làm (tránh over-engineering cho một MVP thi đấu)
+## Not needed (avoid over-engineering a competition MVP)
 
-- Không cần Kubernetes, microservices, hay hạ tầng auto-scale phức tạp.
-- Không cần CI/CD pipeline đầy đủ — commit và deploy thủ công/tự động đơn giản là đủ.
-- Không cần viết test coverage 100% — ưu tiên test các luồng chính đã nêu ở
-  `testing-and-validation`.
+- No need for Kubernetes, microservices, or complex auto-scaling infrastructure.
+- No need for a full CI/CD pipeline — manual or simple automatic commit-and-deploy is enough.
+- No need for 100% test coverage — prioritize testing the main flows listed in `testing-and-validation`.
 
-## Output kỳ vọng
+## Expected output
 
-- Một link truy cập sản phẩm thật, hoạt động ổn định, không lộ secrets
-- Ghi chú ngắn về giới hạn đã biết của bản deploy (đưa vào Báo cáo sản phẩm nếu có)
+- A real, working product access link, stable, with no leaked secrets
+- A short note on known limitations of this deployment (include in the Product Report if applicable)
 
-## Liên quan
+## Related
 
-- Trước bước này: `ai-assisted-build`, `testing-and-validation`, `security-basics`
-- Xem thêm: `guides/04-ship/` để hiểu sâu hơn từng khái niệm (biến môi trường, CORS,
-  rate limiting...) nếu chưa quen thuật ngữ kỹ thuật.
+- Before this step: `ai-assisted-build`, `testing-and-validation`, `security-basics`
+- See also: `guides/04-ship/` for a deeper explanation of concepts (environment variables, CORS, rate limiting...) if these technical terms are unfamiliar.
 
-## Nguồn tham khảo
+## Sources
 
-Checklist bảo mật (mục 1-2) có căn cứ định lượng thật: một khảo sát của Veracode trên
-hơn 100 model AI cho thấy 45% code AI sinh ra chứa lỗ hổng thuộc OWASP Top 10; một đợt
-quét của Escape.tech trên 5.600 ứng dụng vibe-coded công khai phát hiện 400 secret bị lộ
-trực tiếp. Chi tiết đầy đủ và các nguồn khác: `resources/nguon-tham-khao.md`, đào sâu
-hơn ở `skills/security-basics/`.
+The security checklist (items 1-2) is backed by real quantitative evidence: a Veracode survey of over 100 AI models found 45% of AI-generated code contains OWASP Top 10 vulnerabilities; an Escape.tech scan of 5,600 publicly deployed vibe-coded applications found 400 directly exposed secrets. Full details and other sources: `resources/nguon-tham-khao.md`, with more depth in `skills/security-basics/`.

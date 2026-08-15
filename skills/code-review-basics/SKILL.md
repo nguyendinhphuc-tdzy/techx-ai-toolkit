@@ -1,53 +1,40 @@
 ---
 name: code-review-basics
-description: Hướng dẫn đọc và đánh giá CHẤT LƯỢNG code do AI sinh ra trước khi chấp nhận, dành cho người không rành kỹ thuật lẫn người có nền tảng code. LUÔN dùng trước khi coi một tính năng do AI viết là "xong", khi chuẩn bị gộp code vào nhánh chính (đánh giá code có đúng không — thao tác Git kỹ thuật dùng git-basics), hoặc khi cần giải thích cho người khác trong đội hiểu đoạn code AI vừa viết. Khi code liên quan xác thực/thanh toán/dữ liệu nhạy cảm, dùng SONG SONG với security-basics, không thay thế nó.
+description: Guides reading and evaluating the QUALITY of AI-generated code before accepting it, for both non-technical people and people with a coding background. ALWAYS use before considering an AI-written feature "done," when about to merge code into the main branch (evaluating whether the code is correct — the Git mechanics themselves use git-basics), or when someone needs to explain an AI-written piece of code to another team member. When code involves authentication/payments/sensitive data, use IN PARALLEL with security-basics, not as a replacement for it.
 ---
 
-# Code Review Basics — Đọc hiểu trước khi chấp nhận
+# Code Review Basics — Understand Before You Accept
 
-## Vì sao không thể "chấp nhận mù"
+## Why "blind acceptance" doesn't work
 
-Thể lệ cuộc thi yêu cầu đội thi hiểu và bảo vệ được giải pháp trước Ban Giám khảo. Nếu
-không ai trong đội đọc và hiểu code AI viết, đội sẽ lúng túng khi bị hỏi "tại sao chọn
-cách này" — và quan trọng hơn, sẽ không phát hiện được lỗi tiềm ẩn trước khi nó gây hậu
-quả thật (mất dữ liệu, lộ thông tin, sản phẩm sập khi demo).
+The competition rules require the team to understand and be able to defend their solution in front of the judges. If nobody on the team reads and understands the code AI wrote, the team will struggle when asked "why did you choose this approach" — and more importantly, will fail to catch hidden bugs before they cause real harm (data loss, leaked information, the product crashing during the demo).
 
-## Checklist đọc code, kể cả khi bạn không biết viết code
+## A reading checklist, even if you don't know how to code
 
-Bạn không cần hiểu từng dòng cú pháp để review có ích. Tập trung vào các câu hỏi sau —
-nhờ AI giải thích bằng lời nếu cần:
+You don't need to understand every line of syntax for a review to be useful. Focus on the following questions — ask AI to explain in plain language if needed:
 
-1. **Luồng dữ liệu đi đâu?** Dữ liệu người dùng nhập vào được lưu ở đâu, gửi đi đâu?
-2. **Điều gì xảy ra khi input sai hoặc rỗng?** Yêu cầu AI chỉ ra đoạn code xử lý trường
-   hợp này — nếu không có, đây là lỗ hổng cần bổ sung.
-3. **Có xử lý lỗi (try-catch / error handling) không?** Nếu một bước thất bại (mạng lỗi,
-   API AI không phản hồi), người dùng có thấy thông báo dễ hiểu hay màn hình trắng?
-4. **Có gì "nhìn lạ" so với phần còn lại của code không?** Style khác biệt đột ngột, đoạn
-   code phức tạp bất thường cho một việc đơn giản — dấu hiệu cần hỏi AI giải thích kỹ hơn
-   hoặc yêu cầu viết lại đơn giản hơn.
+1. **Where does the data flow?** Where is user input stored, where is it sent?
+2. **What happens on invalid or empty input?** Ask AI to point out the code handling this case — if there isn't any, that's a gap that needs filling.
+3. **Is there error handling (try-catch)?** If a step fails (network error, AI API doesn't respond), does the user see an understandable message or a blank screen?
+4. **Does anything "look off" compared to the rest of the code?** A sudden style shift, unusually complex code for a simple task — a sign to ask AI to explain it more or to rewrite it more simply.
 
-## Với người có nền tảng code — thêm các điểm sau
+## For people with a coding background — check these too
 
-- Có logic trùng lặp nên tách hàm dùng chung không?
-- Có đang gọi API/database nhiều lần không cần thiết (ảnh hưởng hiệu năng, chi phí) không?
-- Tên biến/hàm có mô tả đúng ý nghĩa không, hay là tên chung chung AI tự đặt?
-- So sánh với `git diff` trước khi commit — đọc chính xác những gì thay đổi, không chỉ
-  tin "AI nói là đã sửa đúng chỗ".
+- Is there duplicate logic that should be extracted into a shared function?
+- Is the code calling an API/database more times than necessary (impacting performance, cost)?
+- Do variable/function names actually describe their meaning, or are they generic names AI made up?
+- Compare against `git diff` before committing — read exactly what changed, don't just trust "AI says it fixed the right spot."
 
-## Quy trình review nhanh cho một Pull Request/thay đổi trong đội
+## Quick review process for a Pull Request/change within the team
 
-1. Người viết (hoặc người prompt AI viết) tóm tắt 2-3 câu: thay đổi này làm gì, vì sao
-   cần.
-2. Người review đọc qua theo checklist ở trên, hỏi lại nếu có phần không rõ.
-3. Nếu ổn, gộp vào nhánh chính (`skills/git-basics/`); nếu chưa ổn, ghi rõ cần sửa gì,
-   không chỉ nói "chưa được".
+1. The author (or the person who prompted AI to write it) summarizes in 2-3 sentences: what this change does, why it's needed.
+2. The reviewer reads through using the checklist above, asking follow-up questions where something is unclear.
+3. If it's fine, merge into the main branch (`skills/git-basics/`); if not, write down exactly what needs fixing, not just "not good enough."
 
-## Cảnh báo cho agent
+## Warnings for the agent
 
-Khi người dùng nói "AI viết xong rồi, gộp vào luôn được chưa", **không** xác nhận ngay —
-dẫn họ qua ít nhất 3-4 câu hỏi trong checklist ở trên trước.
+When the user says "AI's done writing it, can I just merge it now," **don't confirm right away** — walk them through at least 3-4 questions from the checklist above first.
 
-## Nguồn tham khảo
+## Sources
 
-Tổng hợp thực tiễn code review phổ biến trong kỹ thuật phần mềm, không dựa trên nghiên
-cứu định lượng cụ thể.
+A synthesis of common code review practice in software engineering, not based on a specific quantitative study.

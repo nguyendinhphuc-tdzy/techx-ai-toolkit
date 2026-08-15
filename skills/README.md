@@ -8,6 +8,11 @@ là bộ hướng dẫn agent tự đọc và áp dụng mỗi khi bạn làm vi
 > benchmark/rủi ro bảo mật có trích nguồn thật trong repo (xem README.md gốc, mục "Về
 > tính xác thực của nội dung"). Dùng như lời khuyên có cấu trúc, không phải quy tắc tuyệt đối.
 
+> Nội dung từng file `SKILL.md` được viết bằng **tiếng Anh** dù phần còn lại của repo là
+> tiếng Việt — vì đây là phần AI agent trực tiếp đọc để tự quyết định khi nào kích hoạt
+> skill, và agent nhận diện/thực thi trigger tiếng Anh ổn định hơn. Bảng dưới đây (dành
+> cho người đọc) vẫn giữ tiếng Việt.
+
 ## Cài đặt nhanh (Claude Code, Codex)
 
 ```bash

@@ -1,69 +1,50 @@
 ---
 name: testing-and-validation
-description: Hướng dẫn kiểm thử MVP với người dùng thật và kiểm tra chất lượng kỹ thuật trước khi coi sản phẩm là hoàn thiện. LUÔN dùng khi người dùng nói MVP "đã xong" hoặc chuẩn bị quay video demo/nộp bài Bán kết, khi cần chuẩn bị "Báo cáo sản phẩm" (khác với "Báo cáo sử dụng AI" — xem ai-usage-logging, đừng gộp hai báo cáo này làm một), hoặc khi cần đánh giá sản phẩm có sẵn sàng trình bày trước Ban Giám khảo không. Khác với production-readiness (lo hạ tầng/link truy cập) — skill này lo tính năng có đúng và trung thực không. Dùng sau ai-assisted-build.
+description: Guides testing an MVP with real users and checking technical quality before considering the product finished. ALWAYS use when the user says the MVP is "done" or is about to record the demo video/submit for the Semifinal round, when preparing the "Product Report" (different from the "AI Usage Report" — see ai-usage-logging, don't merge these two reports into one), or when evaluating whether the product is ready to present in front of the judges. Different from production-readiness (which covers infrastructure/access links) — this skill covers whether the features are correct and honestly represented. Use after ai-assisted-build.
 ---
 
-# Testing & Validation — Kiểm chứng thật, không tự huyễn hoặc
+# Testing & Validation — Verify for Real, Don't Fool Yourself
 
-## Nguyên tắc cốt lõi
+## Core principle
 
-Thể lệ quy định rõ: "hành vi dàn dựng demo sai sự thật bị trừ điểm hoặc loại" và đội
-thi phải "trình bày trung thực về tính năng, dữ liệu và mức độ hoàn thiện". Agent áp
-dụng skill này giúp người dùng phân biệt rõ **"nó chạy khi tôi bấm đúng thứ tự tôi đã
-tập"** với **"nó thực sự hoạt động"** — hai điều rất khác nhau.
+The competition rules explicitly state: "staging a demo that misrepresents the truth results in a point deduction or disqualification," and the team must "present features, data, and completeness honestly." An agent applying this skill helps the user clearly distinguish **"it works when I click things in the exact order I rehearsed"** from **"it actually works"** — two very different things.
 
-## Hai lớp kiểm thử cần làm
+## Two layers of testing needed
 
-### Lớp 1 — Kiểm thử kỹ thuật (functional testing)
-Với mỗi tính năng lõi, tự hỏi và thử:
-- Điều gì xảy ra khi người dùng nhập sai, nhập rỗng, hoặc bấm nhanh liên tục?
-- Điều gì xảy ra khi mất kết nối mạng giữa chừng, hoặc AI API trả về lỗi/timeout?
-- Nếu có nhiều người dùng cùng lúc, dữ liệu có bị ghi đè/lẫn lộn không?
-- Với tính năng dùng AI: thử ít nhất 5-10 input khác nhau, kể cả input "khó" hoặc cố
-  tình đánh lừa — ghi lại tỷ lệ AI trả lời đúng/hữu ích, đừng chỉ thử 1 lần "đẹp" rồi
-  quay video luôn.
+### Layer 1 — Technical (functional) testing
+For every core feature, ask and try:
+- What happens when the user enters something wrong, empty, or clicks rapidly in succession?
+- What happens if the network drops mid-way, or the AI API returns an error/times out?
+- If multiple users act at the same time, does data get overwritten/mixed up?
+- For AI-powered features: try at least 5-10 different inputs, including "hard" or deliberately tricky ones — record the rate of correct/useful AI responses, don't just try one "clean" case and record the video.
 
-### Lớp 2 — Kiểm thử với người dùng thật (user validation)
-Đây là bước hay bị bỏ qua nhất trong 6 tuần gấp gáp, nhưng lại là bằng chứng thuyết
-phục nhất trước BGK. Tối thiểu:
-- Đưa sản phẩm cho 3-5 người thuộc đúng nhóm người dùng mục tiêu đã xác định ở
-  `problem-framing`, **không phải bạn cùng đội hay người quen biết trước sản phẩm**.
-- Quan sát họ dùng mà không hướng dẫn trước — nếu họ bị kẹt ở đâu, đó là vấn đề thật của
-  sản phẩm, không phải vấn đề của họ.
-- Hỏi cụ thể: "vấn đề ban đầu của bạn có được giải quyết không?", không hỏi chung chung
-  "bạn thấy sao?".
-- Ghi lại phản hồi, kể cả phản hồi tiêu cực — đưa vào Báo cáo sản phẩm cho thấy đội có
-  quy trình kiểm chứng thật, đây là điểm cộng lớn với giám khảo có kinh nghiệm.
+### Layer 2 — Real user validation
+This is the step most often skipped in a rushed 6 weeks, yet it's the most convincing evidence in front of the judges. At minimum:
+- Give the product to 3-5 people from the exact target user group identified in `problem-framing`, **not teammates or people who already know the product**.
+- Watch them use it without guiding them — if they get stuck somewhere, that's a real problem with the product, not a problem with them.
+- Ask specifically: "was your original problem solved?" — not a generic "what did you think?"
+- Record the feedback, including negative feedback — including it in the Product Report shows the team has a genuine validation process, a strong point with experienced judges.
 
-## Quy trình quay video Demo MVP (tối đa 3 phút theo Thể lệ)
+## MVP Demo video process (max 3 minutes per the competition rules)
 
-1. Mở đầu bằng vấn đề (10-15 giây) — nhắc lại ai, vấn đề gì, không lan man.
-2. Trình diễn đúng luồng chính, dùng dữ liệu/tình huống thực tế chứ không phải tình
-   huống lý tưởng hoá quá mức.
-3. Nếu có giới hạn/lỗi đã biết, không cần giấu — một câu ngắn "hiện tại phiên bản này
-   chưa xử lý [X], dự kiến hoàn thiện ở bản tiếp theo" cho thấy sự trung thực, tốt hơn
-   nhiều so với bị phát hiện dàn dựng.
-4. Quay trên môi trường triển khai thật (đã deploy) nếu có thể, không chỉ quay màn hình
-   `localhost` — càng gần thật, càng đáng tin.
+1. Open with the problem (10-15 seconds) — restate who, what problem, no rambling.
+2. Demonstrate the actual main flow, using realistic data/situations rather than an overly idealized scenario.
+3. If there are known limitations/bugs, no need to hide them — a short "this version doesn't yet handle [X], planned for the next version" shows honesty, much better than being caught staging it.
+4. Record on the real deployed environment if possible, not just a `localhost` screen recording — the closer to real, the more credible.
 
-## Output kỳ vọng
+## Expected output
 
-- Bảng kết quả kiểm thử kỹ thuật: tính năng / trường hợp thử / kết quả / đã sửa chưa
-- Tóm tắt phản hồi người dùng thật: số người thử, phát hiện chính, thay đổi đã thực hiện
-  sau phản hồi (nếu MVP được điều chỉnh dựa trên feedback, đây là điểm mạnh — nêu rõ)
-- Video demo đúng thời lượng, quay trên bản deploy thật
+- A technical test results table: feature / test case / result / fixed or not
+- A summary of real user feedback: number of people tested, key findings, changes made in response to feedback (if the MVP was adjusted based on feedback, this is a strength — call it out explicitly)
+- A demo video of the correct length, recorded on the real deployment
 
-Nội dung này đưa thẳng vào phần "Báo cáo sản phẩm" — xem `templates/bao-cao-san-pham-template.md`.
+This content feeds directly into the "Product Report" section — see `templates/bao-cao-san-pham-template.md`.
 
-## Cảnh báo cho agent
+## Warnings for the agent
 
-- Nếu người dùng chỉ thử sản phẩm 1 lần và muốn quay demo ngay, nhắc rõ rủi ro: BGK có
-  thể hỏi trực tiếp và thử lại sản phẩm tại chỗ ở phần phản biện.
-- Không giúp "làm đẹp" số liệu hay kết quả thử nghiệm không có thật.
+- If the user has only tried the product once and wants to record the demo right away, flag the risk clearly: judges may ask to try the product live themselves during the Q&A.
+- Don't help "dress up" numbers or test results that aren't real.
 
-## Nguồn tham khảo
+## Sources
 
-Yêu cầu về tính trung thực khi demo trích trực tiếp từ Mục X.1 Thể lệ cuộc thi ("hành vi
-dàn dựng demo sai sự thật bị trừ điểm hoặc loại"). Quy trình kiểm thử kỹ thuật và kiểm
-thử người dùng là tổng hợp thực tiễn UX research/QA phổ biến, không dựa trên benchmark cụ
-thể.
+The honesty requirement for demos is quoted directly from Section X.1 of the competition rules ("staging a demo that misrepresents the truth results in a point deduction or disqualification"). The technical testing and user testing process is a synthesis of common UX research/QA practice, not based on a specific benchmark.

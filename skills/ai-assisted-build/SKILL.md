@@ -1,89 +1,53 @@
 ---
 name: ai-assisted-build
-description: Hướng dẫn quy trình xây dựng MVP có hệ thống khi dùng AI coding assistant (Claude Code, Cursor, ChatGPT, Lovable, Replit Agent...), chống lại kiểu "vibe coding" thiếu kiểm soát. LUÔN dùng khi người dùng ĐÃ có vai trò AI rõ ràng (qua ai-solution-design) và bắt đầu code/dựng sản phẩm, hoặc khi cần lập kế hoạch kỹ thuật cho MVP trước vòng Bán kết. KHÔNG dùng nếu ý tưởng/vấn đề CHƯA được đóng khung trong hội thoại — dù người dùng nói "để AI viết code luôn" hay "cứ prompt rồi xem chạy không", vẫn phải quay lại problem-framing (rồi ai-solution-design) trước.
+description: Guides a systematic process for building an MVP with an AI coding assistant (Claude Code, Cursor, ChatGPT, Lovable, Replit Agent...), countering unchecked "vibe coding." ALWAYS use once the user ALREADY has a clear AI role (via ai-solution-design) and is starting to code/build the product, or when technical planning is needed for the MVP before the Semifinal round. DO NOT use if the idea/problem has NOT yet been framed in the conversation — even if the user says "just let AI write the code" or "just prompt it and see if it runs," go back to problem-framing (then ai-solution-design) first.
 ---
 
-# AI-Assisted Build — Xây MVP có hệ thống, không vibe code
+# AI-Assisted Build — Building an MVP Systematically, Not Vibe Coding
 
-## "Vibe coding" là gì và tại sao nó thất bại ở cuộc thi này
+## What "vibe coding" is, and why it fails in this competition
 
-Vibe coding: mở AI lên, gõ một prompt mơ hồ, chạy thử, thấy lỗi thì paste lỗi vào AI, lặp
-lại tới khi "có vẻ chạy được" — không ai trong đội thực sự hiểu kiến trúc, không có gì
-kiểm chứng được, và khi cần sửa một chỗ thì hỏng chỗ khác. Sản phẩm kiểu này thường: (1)
-chạy trên máy người viết nhưng không chạy trên máy khác, (2) sụp đổ ngay khi demo có
-tình huống ngoài kịch bản, (3) đội thi không giải thích được lựa chọn kỹ thuật khi bị
-BGK hỏi phản biện — vi phạm đúng tinh thần "phần đóng góp về tư duy, quyết định của con
-người" mà Thể lệ yêu cầu.
+Vibe coding: open up AI, type a vague prompt, run it, paste any error back into AI, repeat until "it sort of works" — nobody on the team actually understands the architecture, nothing is verifiable, and fixing one thing breaks another. Products built this way typically: (1) run on the author's machine but not on anyone else's, (2) collapse the moment the demo hits anything outside the rehearsed script, (3) leave the team unable to explain their technical choices when judges ask during the Q&A — directly violating the competition rules' requirement for genuine "human thinking and decision-making."
 
-Agent áp dụng skill này có trách nhiệm **giữ người dùng đi đúng quy trình dưới đây**,
-kể cả khi họ muốn "làm nhanh cho xong". Làm đúng quy trình vẫn nhanh hơn vibe coding về
-tổng thời gian, vì tránh được vòng lặp sửa-lỗi-sinh-lỗi-mới.
+An agent applying this skill is responsible for **keeping the user on the process below**, even when they want to "just get it done fast." Following the process properly is still faster overall than vibe coding, because it avoids the fix-a-bug-create-a-new-bug loop.
 
-## Quy trình 6 bước
+## The 6-step process
 
-### Bước 1 — Viết đặc tả phạm vi MVP trước khi viết prompt đầu tiên
-Xác định rõ: 3-5 tính năng **lõi** duy nhất chứng minh được giá trị AI đã thiết kế ở
-bước `ai-solution-design`. Viết ra danh sách "Không làm trong MVP này" song song — đây
-là bước hay bị bỏ qua nhất và gây trễ tiến độ nhất. Một MVP tốt cho 6 tuần thường có
-3-5 tính năng, không phải 15.
+### Step 1 — Write the MVP scope spec before writing the first prompt
+Nail down: the 3-5 **core** features that alone prove the AI value designed in the `ai-solution-design` step. Write a "Not in this MVP" list alongside it — this is the most commonly skipped step and the one that causes the most delay. A good 6-week MVP usually has 3-5 features, not 15.
 
-### Bước 2 — Chọn kiến trúc đơn giản nhất đáp ứng được yêu cầu
-Không chọn kiến trúc phức tạp "cho chuyên nghiệp" nếu MVP không cần. Ưu tiên: một
-framework quen thuộc với AI coding assistant (Next.js, React + FastAPI, v.v. — AI được
-train nhiều nhất trên các stack phổ biến nên hỗ trợ tốt hơn), một database đơn giản
-(Postgres/SQLite/Supabase), tách rõ frontend/backend nếu có, quản lý biến môi trường
-(env vars) ngay từ đầu chứ không hardcode API key vào code.
+### Step 2 — Choose the simplest architecture that meets the requirements
+Don't pick a complex architecture "to look professional" if the MVP doesn't need it. Prioritize: a framework the AI coding assistant knows well (Next.js, React + FastAPI, etc. — AI is trained most heavily on popular stacks, so it supports them better), a simple database (Postgres/SQLite/Supabase), a clear frontend/backend split if applicable, and environment variable management from day one instead of hardcoding API keys into the code.
 
-### Bước 3 — Chia nhỏ việc build thành các đơn vị kiểm chứng được
-Không prompt "làm cho tôi cả app". Chia theo tính năng, mỗi tính năng chia theo: (a) mô
-hình dữ liệu, (b) logic xử lý, (c) giao diện, (d) kết nối AI (nếu có). Sau mỗi đơn vị,
-**chạy thử và xác nhận nó hoạt động đúng trước khi yêu cầu AI làm phần tiếp theo.** Đây
-là khác biệt cốt lõi giữa build có hệ thống và vibe coding.
+### Step 3 — Break the build into verifiable units
+Don't prompt "build the whole app for me." Break it down by feature, and each feature by: (a) data model, (b) processing logic, (c) UI, (d) AI integration (if any). After each unit, **run it and confirm it works correctly before asking AI for the next part.** This is the core difference between systematic building and vibe coding.
 
-### Bước 4 — Viết prompt rõ ràng, có ngữ cảnh, có tiêu chí chấp nhận
-Prompt tốt gồm: mục tiêu cụ thể của đoạn code này, ngữ cảnh (đoạn code liên quan, cấu
-trúc project hiện tại), ràng buộc (thư viện được dùng, style code), và tiêu chí để biết
-khi nào đúng ("khi nhập email sai định dạng, hiển thị lỗi X"). Tránh prompt kiểu "làm
-cho tôi tính năng đăng nhập" không kèm ngữ cảnh gì.
+### Step 4 — Write clear prompts with context and acceptance criteria
+A good prompt includes: the specific goal of this piece of code, context (relevant existing code, current project structure), constraints (libraries in use, code style), and criteria for knowing when it's correct ("when the email format is invalid, show error X"). Avoid prompts like "build me a login feature" with no context attached.
 
-### Bước 5 — Đọc và hiểu code AI tạo ra trước khi chấp nhận
-Không copy-paste mà không đọc. Tối thiểu: hiểu luồng dữ liệu đi qua đâu, có lưu thông
-tin nhạy cảm (mật khẩu, API key) sai chỗ không, có xử lý trường hợp lỗi/rỗng không. Nếu
-không hiểu đoạn code AI viết, yêu cầu AI giải thích trước khi dùng — đừng để có code
-trong sản phẩm mà không ai trong đội hiểu, vì BGK sẽ hỏi.
+### Step 5 — Read and understand the AI-generated code before accepting it
+Don't copy-paste without reading. At minimum: understand where the data flows, whether sensitive information (passwords, API keys) is being stored in the wrong place, and whether error/empty cases are handled. If you don't understand a piece of code AI wrote, ask AI to explain it before using it — don't let code exist in the product that nobody on the team understands, because judges will ask about it.
 
-### Bước 6 — Dùng version control (Git) ngay từ commit đầu tiên
-Commit sau mỗi đơn vị chạy được, kèm message rõ ràng. Lý do thực dụng: khi AI "sửa" làm
-hỏng thêm, bạn có điểm quay lại an toàn thay vì build lại từ đầu. Đây cũng là thói quen
-bắt buộc để tới bước deploy (`production-readiness`) không bị rối.
+### Step 6 — Use version control (Git) from the very first commit
+Commit after every unit that works, with a clear message. Practical reason: when AI "fixes" something and breaks more, you have a safe rollback point instead of rebuilding from scratch. This is also a required habit for the deploy step (`production-readiness`) to go smoothly.
 
-## Checklist trước khi coi một tính năng là "xong"
+## Checklist before considering a feature "done"
 
-- [ ] Chạy thử được, không chỉ "AI nói là xong"
-- [ ] Xử lý được ít nhất một trường hợp input sai/thiếu
-- [ ] Ít nhất một thành viên khác trong đội (ngoài người viết prompt) hiểu được logic
-- [ ] Đã commit vào Git với message mô tả rõ
+- [ ] It actually runs, not just "AI says it's done"
+- [ ] Handles at least one wrong/missing input case
+- [ ] At least one other team member (not the one who wrote the prompt) understands the logic
+- [ ] Committed to Git with a clear description
 
-## Khi AI bị kẹt trong vòng lặp sửa lỗi
+## When AI gets stuck in a fix loop
 
-Nếu đã yêu cầu AI sửa cùng một lỗi 2-3 lần mà không xong: dừng lại, tự đọc lỗi, tóm tắt
-lại vấn đề bằng lời của chính mình rồi mới prompt tiếp — đừng paste nguyên lỗi và hy vọng
-lần này khác. Thường nguyên nhân là ngữ cảnh AI đang có không đủ hoặc sai — cung cấp lại
-đúng phần code liên quan thay vì để AI đoán.
+If you've asked AI to fix the same bug 2-3 times without success: stop, read the error yourself, summarize the problem in your own words before prompting again — don't paste the same error and hope it's different this time. The cause is usually that AI is missing important context or has misunderstood the underlying problem — provide the actual relevant code instead of letting AI guess.
 
-## Liên quan
+## Related
 
-- Trước bước này: `ai-solution-design` (đã biết AI đóng vai trò gì)
-- Song song: `ai-usage-logging` (ghi log ngay khi build, không đợi tới lúc nộp),
-  `ai-prompting` (viết prompt hiệu quả), `git-basics` (lưới an toàn khi AI làm hỏng code)
-- Sau bước này: `code-review-basics`, `testing-and-validation`, rồi
-  `production-readiness`
+- Before this step: `ai-solution-design` (AI's role is already known)
+- In parallel: `ai-usage-logging` (log as you build, don't wait until submission), `ai-prompting` (writing effective prompts), `git-basics` (safety net for when AI breaks the code)
+- After this step: `code-review-basics`, `testing-and-validation`, then `production-readiness`
 
-## Nguồn tham khảo
+## Sources
 
-Cảnh báo về rủi ro của cách làm thiếu hệ thống ("vibe coding") có căn cứ định lượng thật:
-một thử nghiệm ngẫu nhiên có đối chứng của METR trên 16 lập trình viên có kinh nghiệm cho
-thấy họ chậm hơn 19% khi dùng AI không có phương pháp, dù tự tin sẽ nhanh hơn 24%
-(arxiv.org/abs/2507.09089). Phần quy trình 6 bước còn lại là tổng hợp thực tiễn phần mềm
-phổ biến, không phải kết quả benchmark riêng cho quy trình này. Chi tiết:
-`resources/nguon-tham-khao.md`.
+The warning about the risk of unsystematic building ("vibe coding") is backed by real quantitative evidence: a randomized controlled trial by METR with 16 experienced developers found they were 19% slower when using AI without a method, despite being confident it would make them 24% faster (arxiv.org/abs/2507.09089). The rest of the 6-step process is a synthesis of common software practice, not the result of a benchmark specific to this process. Details: `resources/nguon-tham-khao.md`.

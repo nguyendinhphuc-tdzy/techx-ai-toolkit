@@ -1,58 +1,40 @@
 ---
 name: benchmark-literacy
-description: Hướng dẫn đọc và diễn giải đúng các bảng benchmark/leaderboard khi so sánh model hoặc công cụ AI cụ thể, tránh bị đánh lừa bởi số liệu marketing. LUÔN dùng khi người dùng đang phân vân chọn model/công cụ AI dựa trên điểm benchmark, khi chuẩn bị trích dẫn số liệu benchmark trong hồ sơ hoặc trước BGK, hoặc khi thấy một tuyên bố kiểu "model X thông minh hơn model Y" cần kiểm chứng. KHÔNG dùng để quyết định AI nên đóng VAI TRÒ gì trong sản phẩm (đó là ai-solution-design) — skill này chỉ so sánh các lựa chọn model/công cụ cụ thể sau khi đã biết cần AI làm gì.
+description: Guides correctly reading and interpreting benchmark/leaderboard tables when comparing specific AI models or tools, avoiding being misled by marketing figures. ALWAYS use when the user is deciding between AI models/tools based on benchmark scores, when preparing to cite benchmark figures in a submission or in front of the judges, or when encountering a claim like "model X is smarter than model Y" that needs verifying. DO NOT use to decide what ROLE AI should play in the product (that's ai-solution-design) — this skill only compares specific model/tool options once you already know what you need AI to do.
 ---
 
-# Benchmark Literacy — Đọc bảng xếp hạng AI mà không bị đánh lừa
+# Benchmark Literacy — Read AI Leaderboards Without Being Misled
 
-## Nguyên tắc cốt lõi
+## Core principle
 
-Benchmark đo **năng lực của model nền tảng**, không đo hiệu quả của skill/prompt/quy
-trình bạn đang dùng. Một model đứng đầu bảng xếp hạng tổng hợp không tự động là lựa chọn
-đúng cho bài toán cụ thể của bạn — luôn tìm benchmark gần nhất với việc thực sự cần làm.
+A benchmark measures the **capability of the underlying model**, not the effectiveness of the skill/prompt/process you're using. A model at the top of an aggregate leaderboard isn't automatically the right choice for your specific problem — always look for the benchmark closest to the actual task at hand.
 
-## Ba câu hỏi cần trả lời trước khi tin một con số benchmark
+## Three questions to answer before trusting a benchmark number
 
-### 1. Ai công bố con số này?
-Số liệu do chính công ty làm ra model tự công bố ("vendor-reported") có xu hướng chọn
-điều kiện thuận lợi nhất cho họ. Số liệu từ bên thứ ba đánh giá độc lập (ví dụ benchmark
-chạy lại bằng harness chuẩn hoá chung cho mọi model) đáng tin hơn để so sánh công bằng.
+### 1. Who published this number?
+Figures self-reported by the company that made the model ("vendor-reported") tend to be cherry-picked under the most favorable conditions for them. Figures from an independent third-party evaluation (e.g., a benchmark re-run using a standardized harness common to every model) are more trustworthy for a fair comparison.
 
-### 2. Benchmark này có nguy cơ nhiễm dữ liệu huấn luyện không?
-Benchmark càng cũ, càng công khai lâu, càng có khả năng model đã "nhìn thấy" đề và đáp
-án trong lúc huấn luyện. Ưu tiên tin các benchmark có cơ chế chống nhiễm (đề bài mới liên
-tục) hoặc phiên bản "khó/mới" của benchmark quen thuộc.
+### 2. Is this benchmark at risk of training data contamination?
+The older and longer a benchmark has been public, the more likely a model has "seen" the questions and answers during training. Prefer benchmarks with anti-contamination mechanisms (continuously refreshed questions) or "hard/new" versions of a familiar benchmark.
 
-### 3. Benchmark này có giống với việc bạn thực sự cần làm không?
-Model giỏi giải bài toán thi đấu lập trình (competitive programming) không chắc giỏi
-việc "sửa một tính năng trong codebase lộn xộn có sẵn" — đây là hai kỹ năng khác nhau.
-Xem `resources/benchmark-va-cach-doc.md` để biết benchmark nào đo gần với loại việc nào.
+### 3. Does this benchmark actually resemble the task you need to do?
+A model that's great at competitive programming isn't necessarily great at "fixing a feature in a messy existing codebase" — these are two different skills. See `resources/benchmark-va-cach-doc.md` to know which benchmark measures which kind of task.
 
-## Quy trình khi cần chọn model/công cụ cho một tính năng cụ thể
+## Process for choosing a model/tool for a specific feature
 
-1. Xác định chính xác tác vụ (sinh nội dung tiếng Việt? xử lý ảnh? sửa code trong
-   codebase có sẵn? tốc độ phản hồi thời gian thực?).
-2. Tìm benchmark gần nhất với tác vụ đó, không dùng điểm tổng hợp chung chung.
-3. Đối chiếu ít nhất 2 nguồn khác nhau nếu có (ví dụ điểm vendor công bố và điểm bên thứ
-   ba đo lại) — nếu chênh lệch lớn, ưu tiên tin nguồn độc lập hơn.
-4. **Luôn tự thử trên bài toán thật của bạn** trước khi quyết định — đây là bước không
-   benchmark công khai nào thay thế được.
+1. Pin down the exact task (generating Vietnamese content? image processing? fixing code in an existing codebase? real-time response speed?).
+2. Find the benchmark closest to that task, don't use a generic aggregate score.
+3. Cross-check at least 2 different sources if available (e.g., the vendor-reported score and an independently re-measured score) — if there's a big gap, trust the independent source more.
+4. **Always test it yourself on your real problem** before deciding — this is a step no public benchmark can replace.
 
-## Khi trình bày trước Ban Giám khảo
+## When presenting to the judges
 
-Nếu so sánh công cụ/model trong hồ sơ hoặc thuyết trình, trích nguồn benchmark cụ thể
-("theo benchmark X, model này đạt Y% trên tác vụ Z") thay vì khẳng định chung chung
-("AI này thông minh hơn"). Thể hiện rõ đây là lựa chọn có căn cứ — đúng tinh thần "tư duy
-kiến tạo giải pháp bằng AI" mà cuộc thi hướng tới.
+If comparing tools/models in a submission or presentation, cite a specific benchmark source ("according to benchmark X, this model scores Y% on task Z") instead of a generic claim ("this AI is smarter"). This shows the choice is evidence-based — exactly the spirit of "solution-building thinking with AI" the competition is looking for.
 
-## Cảnh báo cho agent
+## Warnings for the agent
 
-Nếu người dùng trích một con số benchmark nghe có vẻ ấn tượng ("model X đạt 99% trên
-benchmark Y") mà không rõ nguồn, khuyến khích kiểm tra lại: ai công bố, benchmark này đo
-gì, có phiên bản mới/khó hơn không cho thấy bức tranh khác không.
+If the user cites a benchmark number that sounds impressive ("model X scores 99% on benchmark Y") without a clear source, encourage double-checking: who published it, what does this benchmark actually measure, is there a newer/harder version that shows a different picture.
 
-## Nguồn tham khảo
+## Sources
 
-Xem `resources/benchmark-va-cach-doc.md` để có danh sách benchmark cụ thể (SWE-bench,
-LMArena, Artificial Analysis, Aider, LiveCodeBench) và giải thích chi tiết ba cái bẫy khi
-đọc benchmark.
+See `resources/benchmark-va-cach-doc.md` for a list of specific benchmarks (SWE-bench, LMArena, Artificial Analysis, Aider, LiveCodeBench) and a detailed explanation of the three traps to watch for when reading a benchmark.

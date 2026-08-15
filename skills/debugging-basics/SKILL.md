@@ -1,59 +1,47 @@
 ---
 name: debugging-basics
-description: Hướng dẫn cách mô tả và xử lý lỗi một cách chính xác khi làm việc với AI, thay vì paste nguyên thông báo lỗi và hy vọng AI đoán đúng. LUÔN dùng khi có lỗi/bug xuất hiện, khi người dùng nói "nó bị lỗi" mà chưa mô tả cụ thể, hoặc khi AI đã thử sửa cùng một lỗi từ 2 lần trở lên mà chưa thành công — kể cả khi người dùng đóng khung việc này là "AI không hiểu ý tôi" hay "prompt sao cho đúng", đây vẫn luôn là debugging-basics chứ không phải ai-prompting, vì nguyên nhân gốc là thiếu mô tả lỗi chính xác (mong đợi/thực tế/thông báo lỗi), không phải kỹ thuật viết prompt.
+description: Guides how to describe and handle a bug precisely when working with AI, instead of pasting the raw error message and hoping AI guesses correctly. ALWAYS use when a bug/error appears, when the user says "it's broken" without describing it precisely, or when AI has tried fixing the same bug 2 or more times without success — even when the user frames this as "AI doesn't understand what I mean" or "how do I prompt this correctly," this is always debugging-basics, not ai-prompting, because the root cause is a lack of precise error description (expected/actual/error message), not a prompting technique issue.
 ---
 
-# Debugging Basics — Mô tả lỗi chính xác trước khi nhờ AI sửa
+# Debugging Basics — Describe the Bug Precisely Before Asking AI to Fix It
 
-## Vì sao "paste lỗi và đợi AI sửa" thường thất bại
+## Why "paste the error and wait for AI to fix it" usually fails
 
-Thông báo lỗi kỹ thuật thường chỉ cho biết *nơi* chương trình dừng lại, không phải *tại
-sao* nó dừng ở đó theo đúng ý người dùng. AI (và cả bạn) cần hiểu **hành vi mong đợi**
-trước khi biết cái gì đang "sai".
+A technical error message usually only tells you *where* the program stopped, not *why* it stopped there relative to what the user actually intended. AI (and you) need to understand the **expected behavior** before knowing what counts as "wrong."
 
-## Quy trình mô tả lỗi có hệ thống
+## A systematic process for describing a bug
 
-### Bước 1 — Tái hiện lỗi một cách nhất quán
-Xác định chính xác các bước để lỗi xảy ra lại được, mỗi lần đều giống nhau. Nếu lỗi
-"thỉnh thoảng mới xảy ra", ghi lại điều kiện khác biệt giữa các lần (dữ liệu khác nhau?
-thao tác nhanh/chậm khác nhau?).
+### Step 1 — Reproduce the bug consistently
+Pin down the exact steps that make the bug happen again, the same way every time. If the bug "only happens sometimes," note what's different between the times it does and doesn't occur (different data? doing things fast vs. slow?).
 
-### Bước 2 — Phân biệt rõ 3 điều: mong đợi / thực tế / thông báo lỗi
-Viết ra theo đúng cấu trúc:
-- **Tôi mong đợi:** [hành vi đúng]
-- **Thực tế xảy ra:** [hành vi sai, mô tả cụ thể]
-- **Thông báo lỗi (nếu có):** [copy nguyên văn]
+### Step 2 — Separate three things clearly: expected / actual / error message
+Write it out in exactly this structure:
+- **I expected:** [correct behavior]
+- **What actually happened:** [wrong behavior, described specifically]
+- **Error message (if any):** [copy verbatim]
 
-### Bước 3 — Thu hẹp phạm vi trước khi hỏi AI
-Tự hỏi: lỗi xảy ra ở bước nào trong luồng xử lý? Nếu có thể, tạm thời thêm log/in ra giá
-trị trung gian để biết chương trình dừng ở đâu, thay vì đoán cả luồng.
+### Step 3 — Narrow the scope before asking AI
+Ask yourself: at which step in the processing flow does the error occur? If possible, temporarily add logging/print statements for intermediate values to know exactly where the program stops, instead of guessing at the whole flow.
 
-### Bước 4 — Cung cấp đúng ngữ cảnh cho AI
-Đưa vào: đoạn code liên quan trực tiếp (không cần cả file nếu không cần thiết), thông
-báo lỗi đầy đủ, các bước tái hiện, và điều bạn đã thử (để AI không lặp lại hướng đã thất
-bại).
+### Step 4 — Give AI the right context
+Provide: the directly relevant code (not the whole file if not needed), the full error message, the reproduction steps, and what you've already tried (so AI doesn't repeat a direction that already failed).
 
-### Bước 5 — Nếu AI sửa 2-3 lần không xong, đổi chiến lược
-Dấu hiệu AI đang thiếu ngữ cảnh quan trọng hoặc đang hiểu sai vấn đề gốc. Dừng lại, tự
-đọc kỹ đoạn code liên quan, hỏi AI giải thích logic hiện tại đang làm gì (không phải sửa
-gì) để hiểu đúng trước khi tiếp tục.
+### Step 5 — If AI fixes it 2-3 times without success, change strategy
+This is a sign AI is missing important context or has misunderstood the root problem. Stop, carefully read the relevant code yourself, ask AI to explain what the current logic actually does (not what to fix) to understand it correctly before continuing.
 
-## Các loại lỗi phổ biến khi build với AI, và hướng xử lý
+## Common bug categories when building with AI, and how to handle them
 
-| Loại lỗi | Nguyên nhân thường gặp | Hướng xử lý |
+| Bug type | Common cause | How to handle |
 |---|---|---|
-| Chạy được trên máy này, không chạy máy khác | Thiếu biến môi trường, phụ thuộc vào cấu hình cục bộ | Xem `skills/production-readiness/` |
-| AI "sửa" xong lại phát sinh lỗi mới ở chỗ khác | AI sửa cục bộ không thấy tác động toàn cục | Cung cấp thêm ngữ cảnh các file liên quan, kiểm tra bằng Git diff trước khi chấp nhận |
-| Lỗi chỉ xảy ra với một số input cụ thể | Thiếu xử lý case biên | Xem `skills/testing-and-validation/` |
-| Lỗi bảo mật (lộ key, quyền truy cập sai) | Thường không hiện lỗi rõ ràng — cần chủ động rà soát | Xem `skills/security-basics/` |
+| Works on this machine, not on another | Missing environment variables, depends on local configuration | See `skills/production-readiness/` |
+| AI "fixes" it but a new bug appears elsewhere | AI's local fix doesn't account for global impact | Provide more context on related files, verify with a Git diff before accepting |
+| Bug only occurs with specific inputs | Missing edge-case handling | See `skills/testing-and-validation/` |
+| Security bug (leaked key, wrong access permissions) | Usually doesn't show an obvious error — needs active review | See `skills/security-basics/` |
 
-## Cảnh báo cho agent
+## Warnings for the agent
 
-Nếu người dùng chỉ nói "nó bị lỗi" hoặc paste một dòng lỗi không kèm ngữ cảnh, **hỏi lại
-theo cấu trúc mong đợi/thực tế/thông báo lỗi** ở Bước 2 trước khi đề xuất bất kỳ sửa đổi
-nào — tránh đoán mò dẫn tới sửa sai chỗ.
+If the user just says "it's broken" or pastes a single error line without context, **ask them to fill in the expected/actual/error-message structure** from Step 2 before proposing any fix — this avoids guessing and fixing the wrong thing.
 
-## Nguồn tham khảo
+## Sources
 
-Tổng hợp thực tiễn debug phổ biến trong kỹ thuật phần mềm, không dựa trên nghiên cứu
-định lượng cụ thể nào.
+This is a synthesis of common software debugging practice, not based on any specific quantitative study.

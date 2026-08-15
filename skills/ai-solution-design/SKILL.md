@@ -1,76 +1,48 @@
 ---
 name: ai-solution-design
-description: Hướng dẫn xác định chính xác AI nên đóng vai trò gì trong một giải pháp, sau khi vấn đề đã được xác định rõ (dùng sau skill problem-framing). LUÔN dùng khi người dùng đã có mô tả vấn đề và cần quyết định kiến trúc giải pháp, khi cần viết phần "Đề xuất giải pháp ứng dụng AI" trong hồ sơ dự thi, hoặc khi cần đánh giá "AI có thực sự cần thiết ở đây không". KHÔNG dùng nếu vấn đề chưa được đóng khung rõ ràng — quay lại problem-framing trước. KHÔNG dùng để so sánh/chọn model hay công cụ AI cụ thể bằng số liệu (đó là benchmark-literacy) — skill này chỉ quyết định AI làm việc gì, chưa chọn công cụ nào.
+description: Guides deciding exactly what role AI should play in a solution, after the problem has already been clearly framed (use after the problem-framing skill). ALWAYS use once the user has a problem description and needs to decide the solution architecture, when writing the "AI Solution Proposal" section of a competition submission, or when evaluating "is AI actually necessary here?" DO NOT use if the problem hasn't been clearly framed yet — go back to problem-framing first. DO NOT use to compare or pick a specific AI model/tool using data (that's benchmark-literacy) — this skill only decides what AI should do, not which tool to use.
 ---
 
-# AI Solution Design — Thiết kế vai trò của AI trong giải pháp
+# AI Solution Design — Designing AI's Role in the Solution
 
-## Nguyên tắc cốt lõi
+## Core principle
 
-Theo đúng tiêu chí chấm của Thể lệ: **AI không bắt buộc là công nghệ lõi**, giám khảo
-đánh giá dựa trên giá trị đáng kể mà AI tạo ra, chứ không phải số lượng công cụ AI hay
-độ phức tạp mô hình. Agent áp dụng skill này phải giúp người dùng trả lời được câu hỏi
-gốc: **"Giải pháp này có thực sự tốt hơn nhờ có AI, so với phương án không dùng AI?"**
-Nếu câu trả lời không rõ ràng, đừng vội thêm AI vào chỉ vì đây là cuộc thi AI.
+Per the competition's judging criteria: **AI is not a mandatory core technology** — judges evaluate the significant value AI creates, not the number of AI tools used or model complexity. An agent applying this skill must help the user answer the underlying question: **"Is this solution actually better because of AI, compared to a non-AI approach?"** If the answer isn't clear, don't rush to bolt AI on just because this is an AI competition.
 
-## Quy trình thiết kế
+## Design process
 
-### Bước 1 — Liệt kê các bước trong hành trình người dùng
-Vẽ ra toàn bộ luồng người dùng tương tác với giải pháp, từng bước một, **trước khi**
-nghĩ AI nằm ở đâu. Ví dụ: Tìm phòng trống → Xem lịch → Chọn giờ → Đặt phòng → Nhận xác
-nhận.
+### Step 1 — List out the steps in the user journey
+Map out the entire flow of how the user interacts with the solution, step by step, **before** thinking about where AI fits in. Example: Find an empty room → View the schedule → Pick a time → Book the room → Get confirmation.
 
-### Bước 2 — Với mỗi bước, hỏi: bước này khó vì thiếu dữ liệu, thiếu phán đoán, hay thiếu tốc độ?
-AI tạo giá trị rõ nhất khi bước đó cần: xử lý dữ liệu phi cấu trúc (văn bản, hình ảnh,
-giọng nói), cá nhân hóa dựa trên ngữ cảnh, sinh nội dung, hoặc ra quyết định dựa trên
-nhiều tín hiệu mờ. AI **không** phải lựa chọn tốt cho: logic đơn giản có quy tắc rõ ràng
-(dùng code thường), tra cứu dữ liệu có cấu trúc (dùng database/query thường), hoặc các
-tác vụ cần độ chính xác tuyệt đối không chấp nhận sai số (dùng rule-based).
+### Step 2 — For each step, ask: is this step hard because of missing data, missing judgment, or missing speed?
+AI creates the clearest value when a step needs: processing unstructured data (text, images, speech), personalization based on context, content generation, or decisions based on multiple fuzzy signals. AI is **not** a good fit for: simple logic with clear rules (use regular code), looking up structured data (use a regular database/query), or tasks requiring absolute precision with zero tolerance for error (use rule-based logic).
 
-### Bước 3 — Chọn đúng 1-2 điểm chạm AI có giá trị cao nhất, không rải AI khắp nơi
-Một sản phẩm nhét AI vào mọi bước thường loãng và khó kiểm soát chất lượng. Ưu tiên
-điểm chạm mà: (a) nếu bỏ AI ra, trải nghiệm giảm rõ rệt, (b) đo được sự khác biệt trước/
-sau khi có AI.
+### Step 3 — Pick the 1-2 highest-value AI touchpoints, don't spread AI everywhere
+A product that stuffs AI into every step is usually diluted and hard to quality-control. Prioritize touchpoints where: (a) removing AI would clearly degrade the experience, (b) the before/after difference with AI is measurable.
 
-### Bước 4 — Xác định rõ AI làm gì, con người/logic thường làm gì
-Viết rõ ràng dạng bảng: "AI chịu trách nhiệm [X]" / "Logic thường (rule-based) chịu
-trách nhiệm [Y]" / "Con người (người dùng hoặc đội vận hành) chịu trách nhiệm [Z]". Đây
-chính là nội dung giám khảo sẽ hỏi ở phần phản biện — đội thi phải trả lời được, không
-chỉ AI hiểu.
+### Step 4 — Clearly define what AI does vs. what humans/regular logic do
+Write it out explicitly as a table: "AI is responsible for [X]" / "Regular (rule-based) logic is responsible for [Y]" / "Humans (users or the operations team) are responsible for [Z]." This is exactly what judges will ask about during the Q&A defense — the team must be able to answer it, not just the AI.
 
-### Bước 5 — Xác định rủi ro và giới hạn của AI trong giải pháp
-Với mỗi điểm chạm AI, trả lời: điều gì xảy ra khi AI sai/ảo giác (hallucinate)? Có cơ
-chế nào để người dùng phát hiện và sửa không? Đây là dấu hiệu của một đội hiểu sản phẩm
-thật sự, không chỉ "để AI tự lo".
+### Step 5 — Identify the risks and limits of AI in the solution
+For each AI touchpoint, answer: what happens when AI is wrong/hallucinates? Is there a mechanism for the user to catch and correct it? This is a sign of a team that truly understands their product, not one that just "lets AI handle it."
 
-### Bước 6 — Chọn công cụ/mô hình AI phù hợp — sau khi đã rõ vai trò, không phải trước
-Chỉ ở bước này mới chọn công cụ cụ thể (xem `resources/cong-cu-ai-theo-giai-doan.md`).
-Tiêu chí chọn: độ phù hợp với tác vụ, chi phí/giới hạn miễn phí, độ dễ tích hợp trong 6
-tuần — không chọn công cụ vì "nghe hot".
+### Step 6 — Choose the right AI tool/model — after the role is clear, not before
+Only at this step should a specific tool be chosen (see `resources/cong-cu-ai-theo-giai-doan.md`). Selection criteria: fit for the task, cost/free-tier limits, ease of integration within 6 weeks — not choosing a tool because it's "hot right now."
 
-## Output kỳ vọng
+## Expected output
 
-Một bảng ngắn:
+A short table:
 
-| Bước trong hành trình người dùng | Ai/cái gì xử lý | Vai trò của AI (nếu có) | Giá trị AI tạo ra so với không có AI |
+| Step in the user journey | Who/what handles it | AI's role (if any) | Value AI creates vs. not having AI |
 |---|---|---|---|
 
-Cộng một đoạn giải trình ngắn (3-4 câu) trả lời thẳng: "AI tạo ra giá trị đáng kể ở đây
-vì..." — đây là nguyên liệu trực tiếp cho phần "Đề xuất giải pháp ứng dụng AI" trong hồ
-sơ Vòng Sơ loại.
+Plus a short explanation (3-4 sentences) directly answering: "AI creates significant value here because..." — this is the raw material for the "AI Solution Proposal" section of the Preliminary Round submission.
 
-## Cảnh báo cho agent
+## Warnings for the agent
 
-- Nếu người dùng đề xuất dùng AI cho một tác vụ mà rule-based rõ ràng làm tốt hơn (rẻ
-  hơn, nhanh hơn, chính xác hơn), **nói thẳng điều đó** — kể cả khi đây là cuộc thi AI.
-  Giám khảo đánh giá đúng đắn của việc áp dụng AI, không phải việc có AI hay không.
-- Tránh thiết kế giải pháp phụ thuộc AI ở bước không chấp nhận sai số (ví dụ: tính toán
-  học phí, xác thực danh tính) mà không có lớp kiểm tra logic thường bên cạnh.
+- If the user proposes using AI for a task that clearly-defined rule-based logic would do better (cheaper, faster, more accurate), **say so directly** — even though this is an AI competition. Judges evaluate the *soundness* of applying AI, not whether AI is present.
+- Avoid designing a solution that depends on AI at a step with zero tolerance for error (e.g., calculating tuition, identity verification) without a regular-logic verification layer alongside it.
 
-## Nguồn tham khảo
+## Sources
 
-Nguyên tắc "AI không bắt buộc là công nghệ lõi, quan trọng là giá trị tạo ra" trích trực
-tiếp từ Mục VII Thể lệ cuộc thi. Phần quy trình thiết kế còn lại là tổng hợp thực tiễn về
-product/AI solution design, không dựa trên benchmark hay nghiên cứu định lượng cụ thể.
-Để chọn công cụ/model AI ở Bước 6 dựa trên căn cứ thay vì cảm tính, xem
-`skills/benchmark-literacy/` và `resources/benchmark-va-cach-doc.md`.
+The principle "AI is not a mandatory core technology, what matters is the value created" is quoted directly from Section VII of the competition rules. The rest of the design process is a synthesis of common product/AI solution design practice, not based on a specific benchmark or quantitative study. To choose a tool/model at Step 6 based on evidence rather than gut feeling, see `skills/benchmark-literacy/` and `resources/benchmark-va-cach-doc.md`.

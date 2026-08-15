@@ -1,81 +1,54 @@
 ---
 name: problem-framing
-description: Hướng dẫn nhận diện và đóng khung một vấn đề thực tế trước khi nghĩ tới giải pháp công nghệ hay AI. LUÔN dùng NGAY khi người dùng vừa nêu một ý tưởng sản phẩm/AI lần đầu trong hội thoại — kể cả khi họ nói muốn "bắt đầu build/code luôn" hay "cứ prompt rồi xem chạy không", vì mọi ý tưởng đều phải qua bước này trước khi tới ai-solution-design hay ai-assisted-build. Cũng dùng khi người dùng nói "tôi muốn làm app/tool cho...", khi cần viết phần "Mô tả vấn đề" trong hồ sơ dự thi, hoặc khi ý tưởng nghe xuất phát từ công nghệ ("dùng AI để...") thay vì từ vấn đề cụ thể. KHÔNG dùng nếu vấn đề đã được đóng khung rõ ràng từ trước trong hội thoại (đã có nhóm người dùng cụ thể + vấn đề quan sát được, đo được) — khi đó đi thẳng ai-solution-design.
+description: Guides identifying and framing a real-world problem before jumping to a technology or AI solution. ALWAYS use IMMEDIATELY when the user first mentions a product/AI idea in the conversation — even if they say they want to "start building/coding right away" or "just prompt it and see if it runs" — because every idea must pass through this step before ai-solution-design or ai-assisted-build. Also use when the user says "I want to build an app/tool for...", when writing the "Problem Description" section of a competition submission, or when the idea sounds technology-first ("use AI to...") rather than problem-first. DO NOT use if the problem has already been clearly framed earlier in the conversation (a specific user group + an observable, measurable problem already established) — go straight to ai-solution-design instead.
 ---
 
-# Problem Framing — Nhận diện vấn đề trước khi chạm vào AI
+# Problem Framing — Identify the Problem Before Touching AI
 
-## Vì sao skill này tồn tại
+## Why this skill exists
 
-Sai lầm phổ biến nhất khi làm sản phẩm AI là bắt đầu từ câu hỏi "AI có thể làm gì?" thay
-vì "ai đang gặp vấn đề gì?". Kết quả là những sản phẩm rất "cool" về mặt công nghệ nhưng
-không ai cần dùng. Agent áp dụng skill này phải **chủ động chặn** người dùng lại nếu họ
-nhảy thẳng vào giải pháp mà chưa trả lời rõ các câu hỏi bên dưới — kể cả khi họ có vẻ vội.
+The most common mistake in building AI products is starting from "what can AI do?" instead of "who has what problem?" The result is products that are technologically "cool" but that nobody actually needs. An agent applying this skill must **actively stop** the user if they jump straight to a solution without first answering the questions below — even when they seem to be in a hurry.
 
-## Dấu hiệu cần áp dụng skill này ngay
+## Signs this skill should apply right now
 
-- Người dùng mở đầu bằng "tôi muốn dùng AI để..." thay vì "người dùng X đang gặp vấn đề Y"
-- Ý tưởng mô tả được bằng công nghệ ("chatbot", "app dùng LLM") nhưng không mô tả được
-  bằng một câu duy nhất về nỗi đau của một nhóm người cụ thể
-- Không có câu trả lời rõ ràng cho "nếu không có sản phẩm này, người dùng đang làm gì?"
+- The user opens with "I want to use AI to..." instead of "user X has problem Y"
+- The idea is described in terms of technology ("chatbot", "an app using an LLM") but cannot be described in a single sentence about a specific group's pain point
+- There's no clear answer to "if this product didn't exist, what would the user be doing instead?"
 
-## Quy trình 5 bước
+## 5-step process
 
-### Bước 1 — Xác định người dùng cụ thể, không phải "mọi người"
-Từ chối các câu trả lời như "sinh viên nói chung" hay "mọi người ai cũng cần". Yêu cầu
-thu hẹp: độ tuổi, hoàn cảnh, tần suất gặp vấn đề, một vài "chân dung" cụ thể. Nếu người
-dùng không biết, đề xuất họ đi hỏi 3-5 người thật thuộc nhóm đó trước khi đi tiếp — đây
-không phải bước có thể bỏ qua.
+### Step 1 — Identify a specific user, not "everyone"
+Reject answers like "students in general" or "everyone needs this." Push for narrowing: age range, circumstances, how often they hit this problem, a few concrete "personas." If the user doesn't know, suggest they go ask 3–5 real people from that group before moving on — this step cannot be skipped.
 
-### Bước 2 — Mô tả vấn đề bằng hành vi quan sát được, không phải giải pháp
-Vấn đề tốt: "Sinh viên năm nhất tốn trung bình 2 giờ/tuần để tìm phòng học trống vì
-lịch phòng không công khai." (quan sát được, đo được)
-Vấn đề tồi: "Sinh viên cần một app tìm phòng học bằng AI." (đã nhảy sang giải pháp)
+### Step 2 — Describe the problem through observable behavior, not a solution
+Good problem statement: "First-year students spend an average of 2 hours/week looking for an empty study room because room schedules aren't public." (observable, measurable)
+Bad problem statement: "Students need an AI-powered room-finder app." (already jumped to a solution)
 
-Nếu người dùng mô tả vấn đề dưới dạng giải pháp, hỏi ngược: "Nếu không có [giải pháp đó],
-điều gì đang thực sự gây khó chịu?"
+If the user describes the problem as a solution, ask back: "If [that solution] didn't exist, what would actually be frustrating them?"
 
-### Bước 3 — Kiểm tra mức độ nghiêm trọng và tần suất
-Một vấn đề đáng giải quyết cần trả lời được: xảy ra bao thường xuyên, ảnh hưởng bao nhiêu
-người, người dùng hiện đang trả giá gì (thời gian/tiền/cơ hội) để đối phó với nó. Vấn đề
-"thỉnh thoảng hơi bất tiện" khác hẳn vấn đề "mất 2 giờ mỗi tuần, ảnh hưởng cả nghìn sinh
-viên".
+### Step 3 — Check severity and frequency
+A problem worth solving must answer: how often does it happen, how many people does it affect, what is the user currently paying (time/money/opportunity) to cope with it. "Occasionally a bit annoying" is a very different problem from "costs 2 hours a week, affects thousands of students."
 
-### Bước 4 — Xác định giải pháp hiện tại (kể cả giải pháp "thủ công")
-Luôn có một cách người dùng đang đối phó với vấn đề — hỏi Google, hỏi bạn bè, dùng Excel,
-chịu đựng. Hiểu rõ giải pháp hiện tại giúp thấy chính xác đâu là khoảng trống thật sự.
+### Step 4 — Identify the current solution (including "manual" workarounds)
+There is always some way the user currently copes with the problem — googling, asking friends, using Excel, just putting up with it. Understanding the current solution reveals exactly where the real gap is.
 
-### Bước 5 — Chỉ sau 4 bước trên mới hỏi: AI có vai trò gì ở đây?
-Không phải mọi vấn đề đều cần AI. Nếu vấn đề giải được bằng một Google Form hay một cái
-bảng Excel, nói thẳng điều đó — chuyển sang skill `ai-solution-design` chỉ khi đã xác
-định được một khoảng trống mà AI thực sự tạo giá trị đáng kể (không phải AI cho có).
+### Step 5 — Only after the 4 steps above, ask: what role does AI play here?
+Not every problem needs AI. If the problem can be solved with a Google Form or a spreadsheet, say so plainly — move to the `ai-solution-design` skill only once a gap has been identified where AI genuinely creates significant value (not AI for its own sake).
 
-## Output kỳ vọng sau khi áp dụng skill
+## Expected output
 
-Một đoạn mô tả vấn đề 3-5 câu theo cấu trúc:
+A 3-5 sentence problem description, structured as:
 
-> **[Nhóm người dùng cụ thể]** đang gặp **[vấn đề quan sát được]** vì **[nguyên nhân gốc]**.
-> Điều này xảy ra **[tần suất]** và khiến họ **[cái giá phải trả]**. Hiện tại họ đang
-> **[giải pháp thủ công hiện có]**, nhưng cách này chưa giải quyết được vì **[khoảng
-> trống cụ thể]**.
+> **[Specific user group]** experiences **[observable problem]** because of **[root cause]**. This happens **[frequency]** and costs them **[the price they pay]**. They currently **[existing manual workaround]**, but it doesn't solve the problem because of **[specific gap]**.
 
-Đoạn này chính là nguyên liệu cho phần "Mô tả vấn đề" trong hồ sơ Vòng Sơ loại — xem
-`templates/ho-so-so-loai-template.md`.
+This paragraph is the raw material for the "Problem Description" section of the Preliminary Round submission — see `templates/ho-so-so-loai-template.md`.
 
-## Lỗi thường gặp cần cảnh báo người dùng
+## Common mistakes to flag for the user
 
-- **Vấn đề quá rộng**: "sinh viên gặp khó khăn trong học tập" — không đội nào giải được
-  trong 6 tuần. Yêu cầu thu hẹp tới một tình huống cụ thể.
-- **Vấn đề tự bịa ra để hợp lý hóa công nghệ đã muốn dùng**: nếu không có ai xác nhận
-  vấn đề này thật, ghi rõ đây là giả định cần kiểm chứng ở bước sau, đừng viết như sự
-  thật đã kiểm chứng.
-- **Nhầm giữa "tính năng thiếu" và "vấn đề"**: "app X không có tính năng Y" là mô tả
-  giải pháp cạnh tranh, chưa phải vấn đề của người dùng.
+- **Problem too broad**: "students struggle with studying" — no team can solve this in 6 weeks. Push for a narrower, specific situation.
+- **A problem invented to justify a technology already wanted**: if no one has confirmed this problem is real, mark it explicitly as an assumption to validate later — don't write it as an already-verified fact.
+- **Confusing "missing feature" with "problem"**: "app X doesn't have feature Y" describes a competitor's solution, not the user's problem.
 
-## Nguồn tham khảo
+## Sources
 
-Quy trình 5 bước là tổng hợp thực tiễn phổ biến trong Design Thinking và phát triển sản
-phẩm (problem discovery), không dựa trên một nghiên cứu định lượng cụ thể — đây là
-phương pháp luận được chấp nhận rộng rãi, không phải kết quả benchmark. Xem
-`resources/nguon-tham-khao.md` để phân biệt nội dung có trích dẫn số liệu thật với nội
-dung tổng hợp thực tiễn trong toàn bộ repo.
+The 5-step process is a synthesis of widely accepted practices in Design Thinking and product development (problem discovery) — it is not based on a specific quantitative study; this is a broadly accepted methodology, not a benchmark result. See `resources/nguon-tham-khao.md` to distinguish content backed by real citations from content that is a synthesis of common practice throughout this repo.

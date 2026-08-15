@@ -1,55 +1,43 @@
 ---
 name: git-basics
-description: Hướng dẫn dùng Git (version control) ở mức cơ bản cần thiết khi build với AI coding assistant — commit, branch, quay lại phiên bản cũ khi AI làm hỏng code. LUÔN dùng khi người dùng chưa dùng Git cho project, khi AI vừa sửa code làm hỏng thêm và cần quay lại bản trước, hoặc khi nhiều thành viên cùng làm trên một codebase. KHÔNG dùng để đánh giá CHẤT LƯỢNG code trước khi gộp nhánh (đó là code-review-basics) — skill này chỉ lo thao tác Git kỹ thuật, không phán đoán code đúng hay sai.
+description: Guides using Git (version control) at the basic level needed when building with an AI coding assistant — commit, branch, rolling back to an earlier version when AI breaks the code. ALWAYS use when the user hasn't set up Git for the project yet, when AI just made an edit that broke the code further and a rollback is needed, or when multiple team members are working on the same codebase. DO NOT use to evaluate the QUALITY of code before merging a branch (that's code-review-basics) — this skill only covers Git mechanics, not judging whether code is correct.
 ---
 
-# Git Basics — Lưới an toàn khi build với AI
+# Git Basics — A Safety Net for Building with AI
 
-## Vì sao Git quan trọng hơn bình thường khi vibe code
+## Why Git matters more than usual when vibe coding
 
-Khi AI viết code thay bạn, tốc độ thay đổi code nhanh hơn nhiều so với tự tay viết —
-nghĩa là khi có sai sót, thiệt hại cũng tích luỹ nhanh hơn. Không có Git, "AI sửa làm
-hỏng thêm" thường dẫn tới việc build lại từ đầu vì không nhớ đâu là bản còn chạy tốt.
+When AI writes code for you, the pace of change is much faster than writing it by hand yourself — meaning when something goes wrong, the damage accumulates faster too. Without Git, "AI's fix broke things further" usually means rebuilding from scratch because there's no memory of which version still worked.
 
-## 5 lệnh đủ dùng cho một MVP thi đấu
+## 5 commands are enough for a competition MVP
 
 ```bash
-git init                          # khởi tạo Git cho project (làm 1 lần đầu tiên)
-git add .                         # đánh dấu các thay đổi để chuẩn bị lưu
-git commit -m "mô tả ngắn gọn"    # lưu lại một "điểm lưu" có thể quay về sau
-git log --oneline                 # xem lại lịch sử các điểm đã lưu
-git checkout -- .                 # huỷ mọi thay đổi chưa commit, quay về điểm lưu gần nhất
+git init                          # initialize Git for the project (do this once, first)
+git add .                         # stage changes to be saved
+git commit -m "short description" # save a "checkpoint" you can return to later
+git log --oneline                 # view the history of saved checkpoints
+git checkout -- .                 # discard all uncommitted changes, revert to the last checkpoint
 ```
 
-## Quy tắc thực dụng: commit sau mỗi đơn vị chạy được
+## Practical rule: commit after every working unit
 
-Không cần commit "đẹp" theo chuẩn doanh nghiệp. Quy tắc tối thiểu: **mỗi khi một tính
-năng/đơn vị nhỏ chạy đúng, commit ngay**, kèm message mô tả rõ ("thêm validate email cho
-form đăng ký", không phải "update"). Đây chính là điểm quay lại an toàn khi bước tiếp
-theo AI làm hỏng code.
+No need for "pretty" enterprise-style commits. Minimum rule: **the moment a small feature/unit works correctly, commit it right away**, with a clear description ("add email validation to the signup form", not "update"). This is exactly the safe rollback point you need when AI breaks the code in the next step.
 
-## Khi AI làm hỏng code và bạn cần quay lại
+## When AI breaks the code and you need to roll back
 
-1. Nếu thay đổi **chưa commit**: `git checkout -- .` để huỷ toàn bộ thay đổi chưa lưu,
-   quay về bản đã commit gần nhất.
-2. Nếu thay đổi **đã commit** nhưng muốn quay lại commit trước đó: `git log --oneline`
-   để xem danh sách, sau đó `git checkout <mã-commit>` để xem lại bản đó (hỏi thêm nếu
-   cần quay hẳn về, vì thao tác này cần cẩn thận hơn với nhánh chính).
+1. If the changes are **not yet committed**: run `git checkout -- .` to discard all uncommitted changes and return to the last commit.
+2. If the changes **were already committed** but you want to go back further: run `git log --oneline` to see the list, then `git checkout <commit-hash>` to look at that version (ask for guidance before going further, since fully reverting the main branch needs more care).
 
-## Làm việc nhóm cơ bản (khi nhiều người cùng code)
+## Basic teamwork (when multiple people are coding together)
 
-- Mỗi người làm trên một nhánh riêng (`git checkout -b ten-nhanh-cua-ban`) thay vì tất
-  cả cùng sửa trực tiếp trên nhánh chính — giảm nguy cơ ghi đè code của nhau.
-- Trước khi gộp code vào nhánh chính, đọc qua thay đổi (`git diff`) để chắc chắn hiểu
-  những gì đang được thêm vào.
+- Each person works on their own branch (`git checkout -b your-branch-name`) instead of everyone editing the main branch directly — this reduces the risk of overwriting each other's work.
+- Before merging code into the main branch, read through the changes (`git diff`) to make sure you understand exactly what's being added.
 
-## Không bao giờ commit các thứ sau
+## Never commit the following
 
-- File `.env` chứa API key/mật khẩu (xem `skills/security-basics/`)
-- Thư mục `node_modules/` hoặc các thư mục phụ thuộc được cài tự động — dùng file
-  `.gitignore` để loại trừ ngay từ đầu
+- `.env` files containing API keys/passwords (see `skills/security-basics/`)
+- The `node_modules/` folder or other auto-installed dependency folders — use a `.gitignore` file to exclude them from day one
 
-## Nguồn tham khảo
+## Sources
 
-Nội dung là kiến thức nền tảng phổ biến về Git, không dựa trên nghiên cứu định lượng cụ
-thể. Tài liệu chính thức: git-scm.com/doc
+This content is common foundational Git knowledge, not based on a specific quantitative study. Official documentation: git-scm.com/doc
