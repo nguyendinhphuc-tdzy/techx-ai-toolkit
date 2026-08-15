@@ -1,6 +1,6 @@
 ---
 name: problem-framing
-description: Hướng dẫn nhận diện và đóng khung một vấn đề thực tế trước khi nghĩ tới giải pháp công nghệ hay AI. LUÔN dùng skill này khi người dùng vừa có một ý tưởng sản phẩm/AI và muốn bắt đầu triển khai ngay, khi người dùng nói "tôi muốn làm app/tool cho...", khi cần viết phần "Mô tả vấn đề" trong hồ sơ dự thi, hoặc khi ý tưởng nghe có vẻ xuất phát từ công nghệ ("dùng AI để...") thay vì từ một vấn đề cụ thể. Đây là bước bắt buộc trước ai-solution-design.
+description: Hướng dẫn nhận diện và đóng khung một vấn đề thực tế trước khi nghĩ tới giải pháp công nghệ hay AI. LUÔN dùng NGAY khi người dùng vừa nêu một ý tưởng sản phẩm/AI lần đầu trong hội thoại — kể cả khi họ nói muốn "bắt đầu build/code luôn" hay "cứ prompt rồi xem chạy không", vì mọi ý tưởng đều phải qua bước này trước khi tới ai-solution-design hay ai-assisted-build. Cũng dùng khi người dùng nói "tôi muốn làm app/tool cho...", khi cần viết phần "Mô tả vấn đề" trong hồ sơ dự thi, hoặc khi ý tưởng nghe xuất phát từ công nghệ ("dùng AI để...") thay vì từ vấn đề cụ thể. KHÔNG dùng nếu vấn đề đã được đóng khung rõ ràng từ trước trong hội thoại (đã có nhóm người dùng cụ thể + vấn đề quan sát được, đo được) — khi đó đi thẳng ai-solution-design.
 ---
 
 # Problem Framing — Nhận diện vấn đề trước khi chạm vào AI

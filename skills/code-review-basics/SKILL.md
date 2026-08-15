@@ -1,6 +1,6 @@
 ---
 name: code-review-basics
-description: Hướng dẫn đọc và đánh giá code do AI sinh ra trước khi chấp nhận, dành cho người không rành kỹ thuật lẫn người có nền tảng code. LUÔN dùng trước khi coi một tính năng do AI viết là "xong", khi chuẩn bị gộp code vào nhánh chính, hoặc khi cần giải thích cho người khác trong đội hiểu đoạn code AI vừa viết.
+description: Hướng dẫn đọc và đánh giá CHẤT LƯỢNG code do AI sinh ra trước khi chấp nhận, dành cho người không rành kỹ thuật lẫn người có nền tảng code. LUÔN dùng trước khi coi một tính năng do AI viết là "xong", khi chuẩn bị gộp code vào nhánh chính (đánh giá code có đúng không — thao tác Git kỹ thuật dùng git-basics), hoặc khi cần giải thích cho người khác trong đội hiểu đoạn code AI vừa viết. Khi code liên quan xác thực/thanh toán/dữ liệu nhạy cảm, dùng SONG SONG với security-basics, không thay thế nó.
 ---
 
 # Code Review Basics — Đọc hiểu trước khi chấp nhận

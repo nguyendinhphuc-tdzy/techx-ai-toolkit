@@ -1,6 +1,6 @@
 ---
 name: security-basics
-description: Hướng dẫn các thực hành bảo mật tối thiểu khi build sản phẩm với AI coding assistant — chống lộ API key/secrets, chống lỗ hổng phổ biến trong code AI sinh ra. LUÔN dùng khi người dùng chuẩn bị commit code lên Git, khi chuẩn bị deploy, khi tích hợp API key/thông tin xác thực, hoặc khi review code AI vừa sinh ra có liên quan tới dữ liệu người dùng/thanh toán/xác thực.
+description: Hướng dẫn các thực hành bảo mật tối thiểu khi build sản phẩm với AI coding assistant — chống lộ API key/secrets, chống lỗ hổng phổ biến trong code AI sinh ra. LUÔN dùng khi người dùng chuẩn bị commit code lên Git, khi chuẩn bị deploy, khi tích hợp API key/thông tin xác thực, khi review code AI vừa sinh ra có liên quan tới dữ liệu người dùng/thanh toán/xác thực, hoặc khi có secret/API key đã lộ hay nghi ngờ đã lộ (kể cả đã commit). Đây là skill DUY NHẤT xử lý sự cố lộ secret, dù đang ở giai đoạn code hay chuẩn bị deploy — production-readiness chỉ trỏ về đây, không lặp lại quy trình xử lý.
 ---
 
 # Security Basics — An toàn tối thiểu khi build với AI

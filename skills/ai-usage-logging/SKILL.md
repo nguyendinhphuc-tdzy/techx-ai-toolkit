@@ -1,6 +1,6 @@
 ---
 name: ai-usage-logging
-description: Hướng dẫn ghi nhật ký sử dụng AI trong suốt quá trình build, để chuẩn bị "Báo cáo sử dụng AI" bắt buộc nộp ở vòng Bán kết theo Thể lệ. LUÔN dùng ngay từ buổi đầu tiên đội bắt đầu dùng AI để build, không đợi tới gần hạn nộp mới dùng skill này. Cũng dùng khi người dùng hỏi "báo cáo sử dụng AI viết gì" hoặc chuẩn bị nộp hồ sơ Bán kết.
+description: Hướng dẫn ghi nhật ký sử dụng AI trong suốt quá trình build, để chuẩn bị "Báo cáo sử dụng AI" bắt buộc nộp ở vòng Bán kết theo Thể lệ (khác với "Báo cáo sản phẩm" — xem testing-and-validation, đừng gộp hai báo cáo này làm một). LUÔN dùng ngay từ buổi đầu tiên đội bắt đầu dùng AI để build, không đợi tới gần hạn nộp. Dùng NGAY, chủ động — không cần người dùng hỏi — mỗi khi đội chỉnh sửa, bác bỏ, hoặc đổi ý so với đề xuất ban đầu của AI trong lúc build, vì đây là khoảnh khắc quan trọng nhất cần ghi lại. Cũng dùng khi người dùng hỏi "báo cáo sử dụng AI viết gì" hoặc chuẩn bị nộp hồ sơ Bán kết.
 ---
 
 # AI Usage Logging — Ghi log dùng AI ngay từ đầu

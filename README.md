@@ -25,12 +25,20 @@ Repo có hai loại nội dung, dùng song song:
 | `templates/` | Thí sinh | Biểu mẫu áp dụng thẳng vào hồ sơ nộp bài theo Thể lệ cuộc thi |
 | `resources/` | Thí sinh | Công cụ AI theo giai đoạn, bảng nguồn tham khảo có trích dẫn, cách đọc benchmark |
 
-> **Về tính xác thực của nội dung:** phần lớn nội dung trong `skills/` và `guides/` là
-> tổng hợp thực tiễn (best practice) về phát triển sản phẩm/phần mềm, không phải kết quả
-> của một benchmark đo lường riêng cho "skill" — hiện chưa tồn tại benchmark công khai
-> nào đo hiệu quả của một SKILL.md cụ thể. Ở những chỗ có số liệu định lượng thật (rủi ro
-> bảo mật, năng suất khi dùng AI...), repo trích nguồn cụ thể trong
-> `resources/nguon-tham-khao.md`. Đừng nhầm hai loại nội dung này với nhau.
+> **Về tính xác thực của nội dung — hai loại khác nhau, đừng nhầm lẫn:**
+> 1. **Skill trong `skills/` do đội TechX tự soạn, chưa qua kiểm chứng cộng đồng hay
+>    benchmark nào.** Đây là tổng hợp thực tiễn (best practice) về phát triển sản phẩm/
+>    phần mềm dựa trên kinh nghiệm, không phải kết quả đo lường — hiện chưa tồn tại
+>    benchmark công khai nào đánh giá hiệu quả của một SKILL.md cụ thể. Coi đây như lời
+>    khuyên có cấu trúc, không phải sự thật đã kiểm chứng; luôn tự đánh giá và điều chỉnh
+>    theo tình huống thực tế của đội bạn.
+> 2. **Số liệu định lượng thật** (rủi ro bảo mật của code AI sinh ra, năng suất khi dùng
+>    AI không có phương pháp...) **được trích nguồn cụ thể, có thể tự kiểm chứng**, xem
+>    `resources/nguon-tham-khao.md`.
+>
+> Hai loại nội dung này xuất hiện xen kẽ trong cùng skill (ví dụ `security-basics`,
+> `ai-assisted-build`) — phần nào có trích nguồn cụ thể trong mục "Nguồn tham khảo" ở
+> cuối mỗi `SKILL.md` là số liệu thật; phần còn lại là tổng hợp thực tiễn tự soạn.
 
 ## Hành trình 4 giai đoạn
 

@@ -1,6 +1,6 @@
 ---
 name: benchmark-literacy
-description: Hướng dẫn đọc và diễn giải đúng các bảng benchmark/leaderboard khi so sánh model hoặc công cụ AI, tránh bị đánh lừa bởi số liệu marketing. LUÔN dùng khi người dùng đang phân vân chọn model/công cụ AI dựa trên điểm benchmark, khi chuẩn bị trích dẫn số liệu benchmark trong hồ sơ hoặc trước BGK, hoặc khi thấy một tuyên bố kiểu "model X thông minh hơn model Y" cần kiểm chứng.
+description: Hướng dẫn đọc và diễn giải đúng các bảng benchmark/leaderboard khi so sánh model hoặc công cụ AI cụ thể, tránh bị đánh lừa bởi số liệu marketing. LUÔN dùng khi người dùng đang phân vân chọn model/công cụ AI dựa trên điểm benchmark, khi chuẩn bị trích dẫn số liệu benchmark trong hồ sơ hoặc trước BGK, hoặc khi thấy một tuyên bố kiểu "model X thông minh hơn model Y" cần kiểm chứng. KHÔNG dùng để quyết định AI nên đóng VAI TRÒ gì trong sản phẩm (đó là ai-solution-design) — skill này chỉ so sánh các lựa chọn model/công cụ cụ thể sau khi đã biết cần AI làm gì.
 ---
 
 # Benchmark Literacy — Đọc bảng xếp hạng AI mà không bị đánh lừa

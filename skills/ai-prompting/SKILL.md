@@ -1,6 +1,6 @@
 ---
 name: ai-prompting
-description: Hướng dẫn viết prompt rõ ràng, có ngữ cảnh và tiêu chí chấp nhận khi yêu cầu AI viết code hoặc thực hiện tác vụ. LUÔN dùng khi người dùng chuẩn bị yêu cầu AI làm một việc mới, khi output của AI liên tục không đúng ý dù đã thử nhiều lần, hoặc khi người dùng hỏi "prompt sao cho đúng". Dùng song song với ai-assisted-build.
+description: Hướng dẫn viết prompt rõ ràng, có ngữ cảnh và tiêu chí chấp nhận khi yêu cầu AI viết code hoặc thực hiện một tác vụ MỚI. LUÔN dùng khi người dùng chuẩn bị yêu cầu AI làm việc gì đó lần đầu, hoặc khi người dùng hỏi thẳng "prompt sao cho đúng". Dùng song song với ai-assisted-build. KHÔNG dùng khi vấn đề là một lỗi/bug cụ thể đã xuất hiện — kể cả khi AI đã sửa nhiều lần không được và output "liên tục không đúng ý" — trường hợp đó luôn chuyển sang debugging-basics, vì nguyên nhân là thiếu mô tả lỗi chính xác (mong đợi/thực tế/thông báo lỗi), không phải thiếu kỹ thuật viết prompt chung.
 ---
 
 # AI Prompting — Viết prompt để nhận đúng cái mình cần

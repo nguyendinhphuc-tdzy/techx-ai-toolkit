@@ -1,6 +1,6 @@
 ---
 name: debugging-basics
-description: Hướng dẫn cách mô tả và xử lý lỗi một cách chính xác khi làm việc với AI, thay vì paste nguyên thông báo lỗi và hy vọng AI đoán đúng. LUÔN dùng khi có lỗi/bug xuất hiện, khi người dùng nói "nó bị lỗi" mà chưa mô tả cụ thể, hoặc khi AI đã thử sửa cùng một lỗi từ 2 lần trở lên mà chưa thành công.
+description: Hướng dẫn cách mô tả và xử lý lỗi một cách chính xác khi làm việc với AI, thay vì paste nguyên thông báo lỗi và hy vọng AI đoán đúng. LUÔN dùng khi có lỗi/bug xuất hiện, khi người dùng nói "nó bị lỗi" mà chưa mô tả cụ thể, hoặc khi AI đã thử sửa cùng một lỗi từ 2 lần trở lên mà chưa thành công — kể cả khi người dùng đóng khung việc này là "AI không hiểu ý tôi" hay "prompt sao cho đúng", đây vẫn luôn là debugging-basics chứ không phải ai-prompting, vì nguyên nhân gốc là thiếu mô tả lỗi chính xác (mong đợi/thực tế/thông báo lỗi), không phải kỹ thuật viết prompt.
 ---
 
 # Debugging Basics — Mô tả lỗi chính xác trước khi nhờ AI sửa

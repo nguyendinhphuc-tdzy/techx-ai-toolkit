@@ -4,6 +4,10 @@ Mỗi thư mục con trong `skills/` là một **skill** độc lập: một fil
 kèm tài liệu tham khảo (nếu có). Skill không phải là prompt để copy-paste một lần — đây
 là bộ hướng dẫn agent tự đọc và áp dụng mỗi khi bạn làm việc liên quan tới chủ đề đó.
 
+> Các skill này do đội TechX tự soạn, chưa qua kiểm chứng cộng đồng — khác với số liệu
+> benchmark/rủi ro bảo mật có trích nguồn thật trong repo (xem README.md gốc, mục "Về
+> tính xác thực của nội dung"). Dùng như lời khuyên có cấu trúc, không phải quy tắc tuyệt đối.
+
 ## Cài đặt nhanh (Claude Code, Codex)
 
 ```bash

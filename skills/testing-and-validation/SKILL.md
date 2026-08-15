@@ -1,6 +1,6 @@
 ---
 name: testing-and-validation
-description: Hướng dẫn kiểm thử MVP với người dùng thật và kiểm tra chất lượng kỹ thuật trước khi coi sản phẩm là hoàn thiện. LUÔN dùng khi người dùng nói MVP "đã xong" hoặc chuẩn bị quay video demo/nộp bài Bán kết, khi cần chuẩn bị Báo cáo sản phẩm, hoặc khi cần đánh giá sản phẩm có sẵn sàng trình bày trước Ban Giám khảo không. Dùng sau ai-assisted-build.
+description: Hướng dẫn kiểm thử MVP với người dùng thật và kiểm tra chất lượng kỹ thuật trước khi coi sản phẩm là hoàn thiện. LUÔN dùng khi người dùng nói MVP "đã xong" hoặc chuẩn bị quay video demo/nộp bài Bán kết, khi cần chuẩn bị "Báo cáo sản phẩm" (khác với "Báo cáo sử dụng AI" — xem ai-usage-logging, đừng gộp hai báo cáo này làm một), hoặc khi cần đánh giá sản phẩm có sẵn sàng trình bày trước Ban Giám khảo không. Khác với production-readiness (lo hạ tầng/link truy cập) — skill này lo tính năng có đúng và trung thực không. Dùng sau ai-assisted-build.
 ---
 
 # Testing & Validation — Kiểm chứng thật, không tự huyễn hoặc

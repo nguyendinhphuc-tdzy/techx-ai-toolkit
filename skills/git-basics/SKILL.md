@@ -1,6 +1,6 @@
 ---
 name: git-basics
-description: Hướng dẫn dùng Git (version control) ở mức cơ bản cần thiết khi build với AI coding assistant — commit, branch, quay lại phiên bản cũ khi AI làm hỏng code. LUÔN dùng khi người dùng chưa dùng Git cho project, khi AI vừa sửa code làm hỏng thêm và cần quay lại bản trước, hoặc khi nhiều thành viên cùng làm trên một codebase.
+description: Hướng dẫn dùng Git (version control) ở mức cơ bản cần thiết khi build với AI coding assistant — commit, branch, quay lại phiên bản cũ khi AI làm hỏng code. LUÔN dùng khi người dùng chưa dùng Git cho project, khi AI vừa sửa code làm hỏng thêm và cần quay lại bản trước, hoặc khi nhiều thành viên cùng làm trên một codebase. KHÔNG dùng để đánh giá CHẤT LƯỢNG code trước khi gộp nhánh (đó là code-review-basics) — skill này chỉ lo thao tác Git kỹ thuật, không phán đoán code đúng hay sai.
 ---
 
 # Git Basics — Lưới an toàn khi build với AI

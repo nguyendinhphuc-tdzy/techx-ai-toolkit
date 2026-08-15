@@ -1,6 +1,6 @@
 ---
 name: ai-assisted-build
-description: Hướng dẫn quy trình xây dựng MVP có hệ thống khi dùng AI coding assistant (Claude Code, Cursor, ChatGPT, Lovable, Replit Agent...), chống lại kiểu "vibe coding" thiếu kiểm soát. LUÔN dùng khi người dùng bắt đầu code/dựng sản phẩm với sự hỗ trợ của AI, khi người dùng nói "để AI viết code luôn" hoặc "cứ prompt rồi xem chạy không", hoặc khi cần lập kế hoạch kỹ thuật cho MVP trước khi bắt đầu vòng Bán kết. Dùng sau khi đã có ai-solution-design.
+description: Hướng dẫn quy trình xây dựng MVP có hệ thống khi dùng AI coding assistant (Claude Code, Cursor, ChatGPT, Lovable, Replit Agent...), chống lại kiểu "vibe coding" thiếu kiểm soát. LUÔN dùng khi người dùng ĐÃ có vai trò AI rõ ràng (qua ai-solution-design) và bắt đầu code/dựng sản phẩm, hoặc khi cần lập kế hoạch kỹ thuật cho MVP trước vòng Bán kết. KHÔNG dùng nếu ý tưởng/vấn đề CHƯA được đóng khung trong hội thoại — dù người dùng nói "để AI viết code luôn" hay "cứ prompt rồi xem chạy không", vẫn phải quay lại problem-framing (rồi ai-solution-design) trước.
 ---
 
 # AI-Assisted Build — Xây MVP có hệ thống, không vibe code

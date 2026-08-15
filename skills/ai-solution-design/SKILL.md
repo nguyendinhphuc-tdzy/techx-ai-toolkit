@@ -1,6 +1,6 @@
 ---
 name: ai-solution-design
-description: Hướng dẫn xác định chính xác AI nên đóng vai trò gì trong một giải pháp, sau khi vấn đề đã được xác định rõ (dùng sau skill problem-framing). LUÔN dùng khi người dùng đã có mô tả vấn đề và cần quyết định kiến trúc giải pháp, khi cần viết phần "Đề xuất giải pháp ứng dụng AI" trong hồ sơ dự thi, hoặc khi cần đánh giá "AI có thực sự cần thiết ở đây không". Không dùng skill này nếu vấn đề chưa được đóng khung rõ ràng — quay lại problem-framing trước.
+description: Hướng dẫn xác định chính xác AI nên đóng vai trò gì trong một giải pháp, sau khi vấn đề đã được xác định rõ (dùng sau skill problem-framing). LUÔN dùng khi người dùng đã có mô tả vấn đề và cần quyết định kiến trúc giải pháp, khi cần viết phần "Đề xuất giải pháp ứng dụng AI" trong hồ sơ dự thi, hoặc khi cần đánh giá "AI có thực sự cần thiết ở đây không". KHÔNG dùng nếu vấn đề chưa được đóng khung rõ ràng — quay lại problem-framing trước. KHÔNG dùng để so sánh/chọn model hay công cụ AI cụ thể bằng số liệu (đó là benchmark-literacy) — skill này chỉ quyết định AI làm việc gì, chưa chọn công cụ nào.
 ---
 
 # AI Solution Design — Thiết kế vai trò của AI trong giải pháp

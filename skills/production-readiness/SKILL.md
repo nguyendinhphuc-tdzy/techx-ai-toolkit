@@ -1,6 +1,6 @@
 ---
 name: production-readiness
-description: Hướng dẫn đưa một MVP từ máy cá nhân lên môi trường triển khai (deployment) thật mà người dùng ngoài đội thi có thể truy cập được, bao gồm bảo mật cơ bản, quản lý biến môi trường, và các bước tối thiểu để sản phẩm không sập khi có người lạ dùng. LUÔN dùng khi người dùng hỏi về deploy/triển khai/đưa sản phẩm lên mạng, khi chuẩn bị cho Demo MVP cần link truy cập thật, hoặc khi sản phẩm vẫn đang chạy trên "localhost". Dùng sau ai-assisted-build và song song/sau testing-and-validation.
+description: Hướng dẫn đưa một MVP từ máy cá nhân lên môi trường triển khai (deployment) thật mà người dùng ngoài đội thi có thể truy cập được — hạ tầng deploy, chi phí API, xử lý lỗi khi chạy thật, và kiểm tra từ môi trường ngoài. LUÔN dùng khi người dùng hỏi về deploy/triển khai/đưa sản phẩm lên mạng, khi cần LINK TRUY CẬP thật cho Demo MVP, hoặc khi sản phẩm vẫn đang chạy trên "localhost". Khác với testing-and-validation (lo tính năng có ĐÚNG và TRUNG THỰC để demo hay không) — skill này lo sản phẩm có TRUY CẬP ĐƯỢC thật và không sập. KHÔNG dùng cho sự cố lộ secret/API key cụ thể — luôn chuyển sang security-basics cho phần đó. Dùng sau ai-assisted-build và song song/sau testing-and-validation.
 ---
 
 # Production Readiness — Từ MVP trên máy cá nhân đến sản phẩm dùng được thật
