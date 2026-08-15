@@ -4,6 +4,18 @@ Bộ tài liệu và skills dùng cho cuộc thi TechX (UEH), giúp thí sinh đ
 **từ ý tưởng đến sản phẩm production thật** khi làm việc với AI — có hệ thống, có kiểm
 chứng, không phải "viết prompt và vibe coding" tùy hứng.
 
+## Cài đặt
+
+```bash
+git clone <link-repo-này>
+cd techx-ai-toolkit
+./setup.sh
+```
+
+Lệnh trên copy toàn bộ skill vào `~/.claude/skills`, agent (Claude Code) sẽ tự chọn đúng
+skill dựa trên việc bạn đang làm — không cần gọi tên skill thủ công. Chi tiết và tuỳ chọn
+đích cài đặt khác (Codex, chỉ cài cho 1 project...) xem `skills/README.md`.
+
 Repo có hai loại nội dung, dùng song song:
 
 | Thư mục | Dành cho | Mục đích |
@@ -38,7 +50,7 @@ Mỗi giai đoạn có: 1) một hoặc nhiều `skills/*.SKILL.md`, 2) guide t�
 
 - **Chưa từng dùng AI để build sản phẩm** → đọc `guides/00-overview/hanh-trinh-idea-to-production.md` trước tiên.
 - **Muốn biết mình còn thiếu năng lực gì để từ "vibe coder" thành "builder" thật** → đọc `guides/00-overview/tu-vibe-coder-den-builder.md`.
-- **Đội đã có agent (Claude Code, Cursor...)** → copy thư mục `skills/` cần dùng vào agent của bạn (xem `skills/README.md` để biết cách gắn).
+- **Đội đã có agent (Claude Code, Codex...)** → chạy `./setup.sh` để cài toàn bộ skill vào agent tự động (xem `skills/README.md` để biết chi tiết và cách gắn thủ công cho Cursor/ChatGPT).
 - **Muốn tự tìm thêm skill/repo trên GitHub ngoài repo này** → đọc `guides/00-overview/tim-va-danh-gia-skill-tren-github.md`.
 - **Sắp nộp hồ sơ Sơ loại / Bán kết / Chung kết** → vào thẳng `templates/` để lấy mẫu đúng chuẩn Thể lệ.
 - **Chưa biết chọn công cụ AI nào** → xem `resources/cong-cu-ai-theo-giai-doan.md`.

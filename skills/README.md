@@ -4,11 +4,28 @@ Mỗi thư mục con trong `skills/` là một **skill** độc lập: một fil
 kèm tài liệu tham khảo (nếu có). Skill không phải là prompt để copy-paste một lần — đây
 là bộ hướng dẫn agent tự đọc và áp dụng mỗi khi bạn làm việc liên quan tới chủ đề đó.
 
-## Gắn vào Claude (claude.ai / Claude Code / Claude Cowork)
+## Cài đặt nhanh (Claude Code, Codex)
 
-- **Claude Code**: copy thư mục skill vào `.claude/skills/<tên-skill>/` trong project của
-  bạn (tạo thư mục này nếu chưa có). Claude Code tự đọc `SKILL.md` khi tên/description
-  khớp với việc bạn đang làm.
+```bash
+git clone <link-repo-này>
+cd techx-ai-toolkit
+./setup.sh
+```
+
+Mặc định script copy toàn bộ skill vào `~/.claude/skills` (dùng được ở mọi project trên
+máy bạn). Đổi đích nếu cần:
+
+```bash
+SKILLS_DEST="$HOME/.codex/skills" ./setup.sh   # Codex
+SKILLS_DEST="./.claude/skills" ./setup.sh      # chỉ cài cho project hiện tại
+```
+
+Chạy lại `./setup.sh` sau mỗi lần `git pull` để lấy bản skill mới nhất. Khởi động lại
+agent (hoặc mở session mới) sau khi cài — agent sẽ tự chọn đúng skill dựa trên việc bạn
+đang làm, không cần gọi tên skill theo cách thủ công.
+
+## Gắn vào Claude (claude.ai / Claude Cowork) — không dùng được setup.sh
+
 - **claude.ai**: nếu tổ chức của bạn bật tính năng skill catalog, có thể "Add skill" trực
   tiếp từ file. Nếu không, copy toàn bộ nội dung `SKILL.md` vào phần custom
   instructions / Project knowledge của Claude.
