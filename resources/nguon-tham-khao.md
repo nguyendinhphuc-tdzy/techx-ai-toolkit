@@ -27,6 +27,12 @@ luôn ưu tiên kiểm tra lại tại nguồn gốc thay vì tin số liệu đ
 | Aider Polyglot leaderboard | Khả năng sửa code dạng diff qua nhiều ngôn ngữ | https://aider.chat/docs/leaderboards |
 | LiveCodeBench | Bài lập trình thi đấu mới, tránh nhiễm dữ liệu train | https://livecodebench.github.io |
 
+## Sách/phương pháp luận tham khảo (không phải số liệu định lượng)
+
+| Nguồn | Vai trò | Link |
+|---|---|---|
+| *The Mom Test* — Rob Fitzpatrick | Kỹ thuật phỏng vấn người dùng tránh câu hỏi dẫn dắt, dùng trong `guides/01-idea/README.md` | https://www.momtestbook.com |
+
 ## Số liệu về rủi ro "vibe coding" (dùng để xây `skills/security-basics`)
 
 | Phát hiện | Nguồn |
