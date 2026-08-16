@@ -6,6 +6,16 @@ Bộ tài liệu và skills dùng cho cuộc thi TechX (UEH), giúp thí sinh đ
 **từ ý tưởng đến sản phẩm production thật** khi làm việc với AI — có hệ thống, có kiểm
 chứng, không phải "viết prompt và vibe coding" tùy hứng.
 
+## Đọc repo này theo thứ tự nào
+
+- **Chưa từng dùng GitHub** → đọc `guides/00-overview/doc-va-su-dung-github.md` trước
+  tiên (giải thích repo/clone/commit từ đầu), rồi quay lại đây.
+- **Đã quen GitHub, chưa biết bắt đầu từ đâu trong repo này** → đọc bảng "hai loại nội
+  dung" ngay dưới để hiểu `skills/` khác `guides/` thế nào, rồi vào mục **"Bắt đầu từ
+  đâu?"** bên dưới — mục đó điều hướng theo đúng việc bạn đang cần làm.
+- **Chỉ cần cài skill vào AI agent, không cần đọc thêm gì** → vào thẳng mục "Cài đặt"
+  ngay sau đây.
+
 ## Cài đặt
 
 ```bash
@@ -102,11 +112,12 @@ techx-ai-toolkit/
 │   ├── 00-overview/
 │   │   ├── hanh-trinh-idea-to-production.md
 │   │   ├── tu-vibe-coder-den-builder.md
-│   │   └── tim-va-danh-gia-skill-tren-github.md
-│   ├── 01-idea/...
-│   ├── 02-build/...
-│   ├── 03-test/...
-│   └── 04-ship/...
+│   │   ├── tim-va-danh-gia-skill-tren-github.md
+│   │   └── doc-va-su-dung-github.md       — cách dùng GitHub từ đầu, cho người chưa biết gì
+│   ├── 01-idea/README.md
+│   ├── 02-build/README.md
+│   ├── 03-test/README.md
+│   └── 04-ship/README.md
 ├── templates/
 │   ├── ho-so-so-loai-template.md
 │   ├── bao-cao-san-pham-template.md
