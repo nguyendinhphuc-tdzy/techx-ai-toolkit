@@ -1,6 +1,6 @@
 ![TechX Banner](TechxBanner.jpg)
 
-# TechX AI Toolkit — Idea → Build → Test → Ship with AI
+# TechX AI Toolkit - Build With AI
 
 Bộ tài liệu và skills dùng cho cuộc thi TechX (UEH), giúp thí sinh đi hết hành trình
 **từ ý tưởng đến sản phẩm production thật** khi làm việc với AI — có hệ thống, có kiểm
