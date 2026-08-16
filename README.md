@@ -23,7 +23,7 @@ Repo có hai loại nội dung, dùng song song:
 | Thư mục | Dành cho | Mục đích |
 |---|---|---|
 | `skills/` | **AI agent** (Claude, Cursor, ChatGPT có custom instructions...) — nội dung viết bằng **tiếng Anh**, vì agent nhận diện và thực thi trigger tiếng Anh ổn định hơn | File hướng dẫn agent cách tư duy và hành động đúng ở từng bước, gắn trực tiếp vào agent để agent tự áp dụng khi hỗ trợ bạn |
-| `guides/` | **Con người** (thí sinh đọc) | Giải thích khái niệm, ví dụ, lý do vì sao — để bạn hiểu *tại sao* làm vậy, không chỉ làm theo |
+| `guides/` | **Thí sinh** | Giải thích khái niệm, ví dụ, lý do vì sao — để bạn hiểu *tại sao* làm vậy, không chỉ làm theo |
 | `templates/` | Thí sinh | Biểu mẫu áp dụng thẳng vào hồ sơ nộp bài theo Thể lệ cuộc thi |
 | `resources/` | Thí sinh | Công cụ AI theo giai đoạn, bảng nguồn tham khảo có trích dẫn, cách đọc benchmark |
 
